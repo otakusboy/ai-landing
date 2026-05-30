@@ -15,7 +15,7 @@ export default function CTA() {
           <div className="lg:col-span-6">
             <h2
               id="cta-heading"
-              className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl xl:text-5xl"
+              className="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl xl:text-5xl"
             >
               {ctaContent.title}
             </h2>

@@ -7,10 +7,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-emerald-900">
+    <header className="sticky top-0 z-50 bg-green-950 py-[14px]">
       <Container>
-        <div className="flex h-16 items-center justify-between text-white lg:h-20">
-          <div className="flex items-center gap-8 lg:gap-12">
+        <div className="flex items-center justify-between text-white">
+          <div className="flex items-center gap-6 lg:gap-12">
             <a
               href={brand.href}
               className="text-lg font-semibold tracking-tight text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -22,12 +22,12 @@ export default function Navbar() {
               aria-label="Main navigation"
               className="hidden md:block"
             >
-              <ul className="flex items-center gap-6 lg:gap-8">
+              <ul className="flex items-center gap-4 lg:gap-8">
                 {navLinks.map((link) => (
                   <li key={link.id}>
                     <a
                       href={link.href}
-                      className="text-sm font-medium text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      className="text-sm font-medium text-white/60 transition-opacity hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {link.label}
                     </a>
@@ -41,6 +41,7 @@ export default function Navbar() {
             <Button
               as="a"
               href="#contact"
+              size="sm"
               className="hidden sm:inline-flex"
             >
               Contact Us
@@ -92,7 +93,7 @@ export default function Navbar() {
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-white/90 hover:bg-emerald-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-white/80 transition-opacity hover:bg-emerald-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}

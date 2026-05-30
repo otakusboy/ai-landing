@@ -7,7 +7,7 @@ export default function SocialProof() {
       <Container>
         <p
           id="social-proof-heading"
-          className="max-w-2xl text-xl leading-relaxed text-gray-600"
+          className="max-w-2xl text-xl text-gray-600"
         >
           {socialProofIntro}
         </p>

@@ -28,7 +28,7 @@ export default function Testimonial() {
             <blockquote>
               <p
                 id="testimonial-heading"
-                className="text-lg leading-relaxed text-gray-700 sm:text-xl lg:text-2xl"
+                className="text-lg text-gray-700 sm:text-xl lg:text-2xl"
               >
                 &ldquo;{testimonial.quote}&rdquo;
               </p>

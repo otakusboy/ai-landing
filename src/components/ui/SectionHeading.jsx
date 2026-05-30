@@ -16,14 +16,14 @@ export default function SectionHeading({
       {title && (
         <TitleTag
           id={titleId}
-          className={`mt-3 text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl ${titleClassName}`}
+          className={`mt-3 text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl ${titleClassName}`}
         >
           {title}
         </TitleTag>
       )}
       {description && (
         <p
-          className={`mt-4 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg ${descriptionClassName}`}
+          className={`mt-4 max-w-3xl text-base text-gray-600 sm:text-lg ${descriptionClassName}`}
         >
           {description}
         </p>

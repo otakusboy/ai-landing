@@ -1,10 +1,20 @@
-const baseStyles =
-  'inline-flex items-center justify-center rounded-[3px] text-base font-medium tracking-[-0.5px] leading-[1.5] py-3 pl-5 pr-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+// Button design tokens — tweak shared styles here
+const buttonTokens = {
+  borderRadius: 'rounded-[0px]',
+}
+
+const baseStyles = `inline-flex items-center justify-center ${buttonTokens.borderRadius} font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`
+
+// Tweak compact button sizing here (button-sm)
+const sizeStyles = {
+  sm: 'py-2 pr-4 pl-4 text-sm font-semibold tracking-[-0.01em] leading-[1.5] min-h-[40px] font-size-16 bg-green-300 rounded-[1px]',
+  md: 'py-3 pl-5 pr-4 text-base tracking-[-0.5px] leading-[1.5]',
+}
 
 const variantStyles = {
   primary: {
     light:
-      'bg-green-50 text-green-800 hover:bg-green-100 active:bg-green-200 focus-visible:outline-green-800',
+      'bg-green-100 text-green-800 hover:bg-green-100 active:bg-green-200 focus-visible:outline-green-800',
     dark:
       'bg-emerald-900 text-emerald-50 hover:bg-emerald-950 active:bg-emerald-950 focus-visible:outline-emerald-50',
   },
@@ -20,15 +30,17 @@ export default function Button({
   children,
   variant = 'primary',
   colorScheme = 'light',
+  size = 'md',
   className = '',
   as: Component = 'button',
   ...props
 }) {
   const styles = variantStyles[variant]?.[colorScheme] ?? variantStyles.primary.light
+  const sizeClass = sizeStyles[size] ?? sizeStyles.md
 
   return (
     <Component
-      className={`${baseStyles} ${styles} ${className}`}
+      className={`${baseStyles} ${sizeClass} ${styles} ${className}`}
       {...props}
     >
       {children}

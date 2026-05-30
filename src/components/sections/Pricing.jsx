@@ -17,14 +17,14 @@ function PricingCard({ plan }) {
       )}
       <h3 className="text-xl font-semibold text-gray-900">{plan.name}</h3>
       <div className="mt-4 flex items-baseline gap-1">
-        <span className="text-4xl font-light tracking-tight text-gray-900">
+        <span className="text-4xl font-light text-gray-900">
           {plan.price}
         </span>
         {plan.period && (
           <span className="text-sm text-gray-600">{plan.period}</span>
         )}
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-gray-600">
+      <p className="mt-4 text-sm text-gray-600">
         {plan.description}
       </p>
 

@@ -4,7 +4,7 @@ import { statistics, statisticsContent } from '../../data/statistics'
 function StatCard({ value, label }) {
   return (
     <article className="rounded-md border border-gray-200 bg-white p-8">
-      <p className="text-4xl font-light tracking-tight text-gray-900 sm:text-5xl">
+      <p className="text-4xl font-light text-gray-900 sm:text-5xl">
         {value}
       </p>
       <p className="mt-3 text-base text-gray-600">{label}</p>
@@ -20,13 +20,13 @@ export default function Statistics() {
           <div className="lg:col-span-5">
             <h2
               id="statistics-heading"
-              className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+              className="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl"
             >
               {statisticsContent.title}
             </h2>
           </div>
           <div className="lg:col-span-7">
-            <p className="text-base leading-relaxed text-gray-600 sm:text-lg">
+            <p className="text-base text-gray-600 sm:text-lg">
               {statisticsContent.description}
             </p>
           </div>

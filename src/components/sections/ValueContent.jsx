@@ -5,7 +5,7 @@ function ValueItem({ headline, description }) {
   return (
     <article className="rounded-md border border-transparent p-4 transition-colors hover:border-gray-200 hover:bg-gray-50">
       <h4 className="text-xl font-bold text-gray-900">{headline}</h4>
-      <p className="mt-2 text-base leading-relaxed text-gray-600">{description}</p>
+      <p className="mt-2 text-base text-gray-600">{description}</p>
     </article>
   )
 }
@@ -34,7 +34,7 @@ export default function ValueContent({ section, reversed = false, compactTop = f
           >
             <h3
               id={`${section.id}-heading`}
-              className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl"
+              className="text-2xl font-semibold text-gray-900 sm:text-3xl"
             >
               {section.title}
             </h3>

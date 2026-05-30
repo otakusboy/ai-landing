@@ -16,7 +16,7 @@ function BlogCard({ post }) {
         </p>
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-semibold leading-snug text-gray-900 sm:text-xl">
+        <h3 className="text-lg font-semibold text-gray-900 sm:text-xl">
           {post.title}
         </h3>
         <a
@@ -38,7 +38,7 @@ export default function Blog() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <h2
             id="blog-heading"
-            className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+            className="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl"
           >
             Latest insights directly from our team
           </h2>
