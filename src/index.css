@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply bg-gray-50 font-sans text-gray-900 antialiased;
+    @apply bg-gray-50 font-sans text-gray-900 antialiased text-balance;
     letter-spacing: -0.01em;
     line-height: 1.15;
     font-weight: 400;
@@ -33,4 +33,19 @@
     letter-spacing: -0.01em;
     line-height: 1.15;
   }
+
+  a:where(:not([data-ui='button'])) {
+    @apply transition-[color,font-weight];
+  }
+}
+
+/* Unlayered so hover wins over per-link text utilities (e.g. navbar). */
+a:where(:not([data-ui='button'])):hover {
+  font-weight: 500;
+  color: var(--color-blue-900);
+}
+
+/* Navbar over hero — nav links hover to full white instead of global blue. */
+header[data-nav-variant='top'] [data-nav-link]:hover {
+  color: white;
 }

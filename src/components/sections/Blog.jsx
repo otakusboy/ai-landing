@@ -21,7 +21,7 @@ function BlogCard({ post }) {
         </h3>
         <a
           href="#"
-          className="mt-4 inline-flex text-sm font-medium text-gray-900 transition-colors hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+          className="mt-4 inline-flex text-sm font-medium text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
         >
           Read more
           <span className="sr-only"> about {post.title}</span>

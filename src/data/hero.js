@@ -1,8 +1,10 @@
 export const heroContent = {
-  title: 'Lorem ipsum dolor sit amet,',
+  title: 'Lorem ipsum dolor sit amet',
   description:
-    'Pellentesque a scelerisque metus, facilisis mollis odio. Integer dignissim, arcu ac lacinia mattis, lacus justo blandit magna, vel volutpat ligula leo non lorem. ',
+    'Pellentesque a scelerisque metus, facilisis mollis odio. Integer dignissim.',
   imageLabel: 'Corporate team reviewing strategic initiatives together',
+  backgroundImage:
+    'src/assets/img2.png',
 }
 
 export const ctaContent = {

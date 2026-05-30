@@ -1,4 +1,3 @@
-import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import SocialProof from './components/sections/SocialProof'
@@ -16,7 +15,6 @@ import { valueSections } from './data/valueContent'
 export default function App() {
   return (
     <>
-      <Navbar />
       <main>
         <Hero />
         <SocialProof />
