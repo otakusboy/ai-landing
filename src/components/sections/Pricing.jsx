@@ -51,7 +51,7 @@ function PricingCard({ plan }) {
 
       <Button
         variant={plan.highlighted ? 'primary' : 'secondary'}
-        size="md"
+        colorScheme={plan.highlighted ? 'light' : 'dark'}
         className="mt-8 w-full"
       >
         {plan.cta}

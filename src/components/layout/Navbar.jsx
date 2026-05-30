@@ -7,13 +7,13 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-emerald-900">
       <Container>
-        <div className="flex h-16 items-center justify-between lg:h-20">
+        <div className="flex h-16 items-center justify-between text-white lg:h-20">
           <div className="flex items-center gap-8 lg:gap-12">
             <a
               href={brand.href}
-              className="text-lg font-semibold tracking-tight text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+              className="text-lg font-semibold tracking-tight text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {brand.name}
             </a>
@@ -27,7 +27,7 @@ export default function Navbar() {
                   <li key={link.id}>
                     <a
                       href={link.href}
-                      className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+                      className="text-sm font-medium text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {link.label}
                     </a>
@@ -41,8 +41,6 @@ export default function Navbar() {
             <Button
               as="a"
               href="#contact"
-              variant="primary"
-              size="sm"
               className="hidden sm:inline-flex"
             >
               Contact Us
@@ -50,7 +48,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 md:hidden"
+              className="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:hidden"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -87,14 +85,14 @@ export default function Navbar() {
           <nav
             id="mobile-nav"
             aria-label="Mobile navigation"
-            className="border-t border-gray-200 pb-4 md:hidden"
+            className="border-t border-emerald-600 pb-4 md:hidden"
           >
             <ul className="flex flex-col gap-1 pt-4">
               {navLinks.map((link) => (
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-white/90 hover:bg-emerald-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -105,8 +103,6 @@ export default function Navbar() {
                 <Button
                   as="a"
                   href="#contact"
-                  variant="primary"
-                  size="md"
                   className="w-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >

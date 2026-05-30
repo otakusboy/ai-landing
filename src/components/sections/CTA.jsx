@@ -20,9 +20,7 @@ export default function CTA() {
               {ctaContent.title}
             </h2>
             <div className="mt-8">
-              <Button variant="primary" size="lg">
-                Contact Us
-              </Button>
+              <Button>Contact Us</Button>
             </div>
           </div>
 
