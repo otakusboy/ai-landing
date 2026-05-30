@@ -6,6 +6,6 @@ export const navLinks = [
 ]
 
 export const brand = {
-  name: 'Meridian Group',
+  name: 'Lipsum',
   href: '#',
 }

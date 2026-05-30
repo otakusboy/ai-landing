@@ -10,7 +10,7 @@ function FooterLinkGroup({ title, links }) {
           <li key={link.id}>
             <a
               href={link.href}
-              className="text-sm text-gray-600 transition-colors hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+              className="text-sm text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             >
               {link.label}
             </a>
@@ -33,7 +33,7 @@ export default function Footer() {
             >
               {footerMeta.brand}
             </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-600">
+            <p className="mt-4 max-w-sm text-sm text-gray-600">
               {footerMeta.tagline}
             </p>
           </div>

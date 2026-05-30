@@ -11,8 +11,8 @@ function UseCaseCard({ title, description }) {
       >
         <div className="h-6 w-6 rounded-sm bg-gray-300" />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 sm:text-xl">{title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
+        <h3 className="text-lg font-semibold text-gray-900 sm:text-xl">{title}</h3>
+      <p className="mt-3 text-sm text-gray-600 sm:text-base">
         {description}
       </p>
     </article>

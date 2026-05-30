@@ -27,7 +27,7 @@ function FAQItem({ item }) {
         aria-labelledby={headingId}
         className="mt-4 pr-8"
       >
-        <p className="text-base leading-relaxed text-gray-600">{item.answer}</p>
+        <p className="text-base text-gray-600">{item.answer}</p>
       </div>
     </div>
   )
@@ -40,7 +40,7 @@ export default function FAQ() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <h2
             id="faq-heading"
-            className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+            className="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl"
           >
             Common questions about our core services
           </h2>
