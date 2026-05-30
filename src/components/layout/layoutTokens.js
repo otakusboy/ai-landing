@@ -7,8 +7,7 @@ export const navbarOffset = {
 }
 
 export const heroLayout = {
-  sectionMinHeight: 'min-h-[70vh] lg:min-h-[100vh]',
-  contentMinHeight: 'min-h-[calc(70vh-68px)] lg:min-h-[calc(100vh-68px)]',
+  sectionHeight: 'h-[95vh] min-h-[95vh] max-h-[95vh]',
+  contentPadding: 'pb-[100px]',
   contentMaxWidth: 'max-w-[700px]',
-  sectionPadding: 'pb-16 lg:pb-20',
 }

@@ -37,7 +37,6 @@ export default function Navbar() {
               as="a"
               href="#contact"
               size="sm"
-              colorScheme="dark"
               useColorStyles={variant === 'scrolled'}
               className={`hidden sm:inline-flex ${navbarTheme.ctaButton[variant]}`}
             >

@@ -23,7 +23,13 @@ export default function MobileNavPanel({ variant, onNavigate }) {
           </li>
         ))}
         <li className="pt-2">
-          <Button as="a" href="#contact" className="w-full" onClick={onNavigate}>
+          <Button
+            as="a"
+            href="#contact"
+            useColorStyles={variant === 'scrolled'}
+            className={`w-full ${navbarTheme.ctaButton[variant]}`}
+            onClick={onNavigate}
+          >
             Contact Us
           </Button>
         </li>

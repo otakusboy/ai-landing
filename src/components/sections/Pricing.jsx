@@ -49,11 +49,7 @@ function PricingCard({ plan }) {
         ))}
       </ul>
 
-      <Button
-        variant={plan.highlighted ? 'primary' : 'secondary'}
-        colorScheme={plan.highlighted ? 'light' : 'dark'}
-        className="mt-8 w-full"
-      >
+      <Button variant={plan.highlighted ? 'primary' : 'secondary'} className="mt-8 w-full">
         {plan.cta}
       </Button>
     </article>

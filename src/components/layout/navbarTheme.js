@@ -32,7 +32,7 @@ export const navbarTheme = {
   },
   ctaButton: {
     // Over hero — default: white surface | hover: primary dark
-    top: 'bg-white text-blue-900 hover:bg-blue-900 hover:text-blue-50 active:bg-blue-950 focus-visible:outline-blue-900',
+    top: 'bg-white text-black hover:bg-black hover:text-white active:bg-black focus-visible:outline-blue-900',
     scrolled: '',
   },
 }
