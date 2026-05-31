@@ -1,5 +1,5 @@
 export const valueIntro = {
-  eyebrow: 'Our value',
+  eyebrow: 'Our Features',
   title: 'Partnership built on lasting mutual trust',
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -8,7 +8,7 @@ export const valueIntro = {
 export const valueSections = [
   {
     id: 'value-a',
-    title: 'Operational clarity for growing enterprise teams',
+    title: 'Command the room, every time',
     imageLabel: 'Team collaborating in a modern office environment',
     items: [
       {
@@ -22,13 +22,7 @@ export const valueSections = [
         headline: 'Real-time performance insights',
         description:
           'Sed nisi nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum praesent mauris fusce nec tellus sed augue semper.',
-      },
-      {
-        id: 'value-a-3',
-        headline: 'Scalable infrastructure design',
-        description:
-          'Maecenas sed diam eget risus varius blandit sit amet non magna. Etiam porta sem malesuada magna mollis euismod consectetur.',
-      },
+      }
     ],
   },
   {
@@ -47,13 +41,7 @@ export const valueSections = [
         headline: 'Compliance-ready audit frameworks',
         description:
           'Morbi leo risus porta ac consectetur ac vestibulum at eros. Praesent commodo cursus magna vel scelerisque nisl consectetur.',
-      },
-      {
-        id: 'value-b-3',
-        headline: 'Continuous monitoring and response',
-        description:
-          'Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh.',
-      },
+      }
     ],
   },
   {
@@ -72,13 +60,7 @@ export const valueSections = [
         headline: 'Proactive onboarding and training',
         description:
           'Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes nascetur.',
-      },
-      {
-        id: 'value-c-3',
-        headline: 'Round-the-clock technical assistance',
-        description:
-          'Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper maecenas sed diam eget.',
-      },
+      }
     ],
   },
 ]

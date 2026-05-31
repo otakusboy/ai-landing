@@ -2,7 +2,9 @@
 
 @theme {
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+   --font-display-alternative: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-mist-200: oklch(92.5% 0.005 214.3);
 }
 
 @layer base {
@@ -19,9 +21,13 @@
   }
 
   h1,
-  h2,
-  h3 {
+  h2 {
     font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  h3 {
+    font-family: var(--font-display-alternative);
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
@@ -32,7 +38,7 @@
   p {
     font-family: var(--font-sans);
     letter-spacing: -0.01em;
-    line-height: 1.15;
+    line-height: 150%;
   }
 
   a:where(:not([data-ui='button'])) {

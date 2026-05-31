@@ -4,12 +4,12 @@ import { partnerLogos, socialProofIntro } from '../../data/socialProof'
 
 export default function SocialProof() {
   return (
-    <section aria-labelledby="social-proof-heading" className="py-20 lg:py-20">
+    <section aria-labelledby="social-proof-heading" className="py-30 lg:py-30">
       <Container>
-        <p id="social-proof-heading" className="max-w-md text-lg text-gray-400 text-center mx-auto">
+        <p id="social-proof-heading" className="max-w-md text-md text-gray-500 text-center mx-auto sm:text-md lg:text-md">
           {socialProofIntro}
         </p>
-        <div className="-mx-4 mt-12 w-[calc(100%+2rem)] overflow-hidden sm:-mx-6 sm:w-[calc(100%+3rem)] lg:-mx-8 lg:w-[calc(100%+4rem)]">
+        <div className="-mx-4 mt-14 w-[calc(100%+2rem)] overflow-hidden sm:-mx-6 sm:w-[calc(100%+3rem)] lg:-mx-8 lg:w-[calc(100%+4rem)]">
           <PartnerLogoTicker logos={partnerLogos()} />
         </div>
       </Container>
