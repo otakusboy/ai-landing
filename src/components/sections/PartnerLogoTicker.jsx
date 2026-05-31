@@ -3,16 +3,25 @@ import { animate, motion, useMotionValue, useReducedMotion } from 'motion/react'
 
 const VELOCITY = 40
 const HOVER_VELOCITY = 20
-const GAP = 24
+const SET_GAP = 40
 
-function getTickerMetrics(container, firstSet) {
-  const setWidth = firstSet.getBoundingClientRect().width
-  if (!setWidth) return null
-  const loopWidth = setWidth + GAP
-  const repeatCount = Math.max(
-    2,
-    Math.ceil(container.getBoundingClientRect().width / loopWidth) + 1,
-  )
+function getTickerMetrics(container, track) {
+  const sets = track.children
+  const firstSet = sets[0]
+  if (!firstSet) return null
+
+  let loopWidth
+  if (sets.length >= 2) {
+    loopWidth = sets[1].offsetLeft - sets[0].offsetLeft
+  } else {
+    const setWidth = firstSet.getBoundingClientRect().width
+    if (!setWidth) return null
+    loopWidth = setWidth + SET_GAP
+  }
+
+  const containerWidth = container.getBoundingClientRect().width
+  const repeatCount = Math.max(2, Math.ceil(containerWidth / loopWidth) + 1)
+
   return { loopWidth, repeatCount }
 }
 
@@ -54,9 +63,9 @@ export default function PartnerLogoTicker({ logos }) {
   useLayoutEffect(() => {
     const container = containerRef.current
     const track = trackRef.current
-    if (!container || !track?.firstElementChild) return
+    if (!container || !track) return
     const update = () => {
-      const next = getTickerMetrics(container, track.firstElementChild)
+      const next = getTickerMetrics(container, track)
       if (!next) return
       setMetrics((prev) =>
         prev?.loopWidth === next.loopWidth && prev?.repeatCount === next.repeatCount
@@ -73,17 +82,21 @@ export default function PartnerLogoTicker({ logos }) {
 
   useEffect(() => {
     if (reducedMotion || !metrics?.loopWidth) return
-    if (prevLoopWidthRef.current !== metrics.loopWidth) {
+    const { loopWidth } = metrics
+
+    if (prevLoopWidthRef.current !== loopWidth) {
       x.set(0)
-      prevLoopWidthRef.current = metrics.loopWidth
+      prevLoopWidthRef.current = loopWidth
     }
+
     const startX = x.get()
-    const controls = animate(x, [startX, startX - metrics.loopWidth], {
-      duration: metrics.loopWidth / velocity,
+    const controls = animate(x, [startX, startX - loopWidth], {
+      duration: loopWidth / velocity,
       ease: 'linear',
       repeat: Infinity,
       repeatType: 'loop',
     })
+
     return () => controls.stop()
   }, [metrics?.loopWidth, reducedMotion, velocity, x])
 
