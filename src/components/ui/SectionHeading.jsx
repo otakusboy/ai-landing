@@ -16,7 +16,7 @@ export default function SectionHeading({
       {title && (
         <TitleTag
           id={titleId}
-          className={`mt-3 text-4xl font-semibold text-gray-900 sm:text-xl lg:text-4xl tracking-normal ${titleClassName}`}
+          className={`mt-3 text-3xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl tracking-normal ${titleClassName}`}
         >
           {title}
         </TitleTag>

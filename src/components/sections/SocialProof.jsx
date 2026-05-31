@@ -4,7 +4,7 @@ import { partnerLogos, socialProofIntro } from '../../data/socialProof'
 
 export default function SocialProof() {
   return (
-    <section aria-labelledby="social-proof-heading" className="py-30 lg:py-30">
+    <section aria-labelledby="social-proof-heading" className="py-20 lg:py-30 sm:py-20">
       <Container>
         <p id="social-proof-heading" className="max-w-md text-md text-gray-500 text-center mx-auto sm:text-md lg:text-md">
           {socialProofIntro}

@@ -25,7 +25,7 @@ export default function Hero() {
           <div className="mx-auto w-full max-w-[650px] text-center">
             <h1
               id="hero-heading"
-              className="text-[1.625rem] font-regular leading-[1.15] text-white sm:text-6xl lg:text-6xl"
+              className="text-4xl font-regular leading-[1.15] text-white sm:text-6xl lg:text-6xl"
             >
               {heroContent.title}
             </h1>

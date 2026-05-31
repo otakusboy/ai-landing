@@ -12,12 +12,22 @@ export default function useMobileMenu() {
       if (e.key === 'Escape') close()
     }
 
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const scrollY = window.scrollY
+
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.width = '100%'
     document.addEventListener('keydown', onKeyDown)
 
     return () => {
-      document.body.style.overflow = prevOverflow
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.width = ''
+      window.scrollTo(0, scrollY)
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [isOpen, close])
