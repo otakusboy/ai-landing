@@ -13,7 +13,7 @@ import {
   mobileMenuItem,
   mobileMenuList,
   mobileMenuPanel,
-} from './navbar.motion'
+} from '@/motion'
 
 function FeatherMenuIcon({ className = 'h-6 w-6' }) {
   return (

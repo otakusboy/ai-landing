@@ -7,7 +7,7 @@ import { valueIntro, valueSections } from '../../data/valueContent'
 import {
   featureCardActiveTransition,
   featureCardActiveTransitionReduced,
-} from './features.motion'
+} from '@/motion'
 
 function FeaturesHeading() {
   return (

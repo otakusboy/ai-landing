@@ -1,7 +1,9 @@
-/** Motion (motion.dev) variants for mobile nav — https://motion.dev */
+/** Shared Motion (motion.dev) config — https://motion.dev */
 
 const spring = { type: 'spring', stiffness: 420, damping: 36 }
 const springExit = { type: 'spring', stiffness: 420, damping: 40 }
+
+// ——— Navbar (mobile menu + menu icon) ———
 
 export const menuIconTransition = { duration: 0.2, ease: [0.22, 1, 0.36, 1] }
 
@@ -18,7 +20,6 @@ export const menuIcon = {
   },
 }
 
-/** Panel slides down on open, slides up on close. */
 export const mobileMenuPanel = {
   hidden: { opacity: 0, y: '-100%' },
   visible: {
@@ -58,6 +59,7 @@ export const mobileMenuItem = {
 }
 
 /** Instant transitions when user prefers reduced motion. */
+
 export function getMotionProps(reduceMotion) {
   if (!reduceMotion) return {}
 
@@ -82,3 +84,17 @@ export function getMotionProps(reduceMotion) {
     },
   }
 }
+
+// ——— Features (active card indicator) ———
+
+export const featureCardActiveTransition = {
+  type: 'spring',
+  stiffness: 420,
+  damping: 36,
+}
+
+export const featureCardActiveTransitionReduced = { duration: 0 }
+
+// ——— Statistics (count-up values) ———
+
+export const statCountTransition = { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
