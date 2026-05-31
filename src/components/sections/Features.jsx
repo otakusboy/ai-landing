@@ -1,8 +1,13 @@
 import { useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { FeatherIcon } from '@/icons'
 import Container from '../layout/Container'
 import SectionHeading from '../ui/SectionHeading'
 import { valueIntro, valueSections } from '../../data/valueContent'
+import {
+  featureCardActiveTransition,
+  featureCardActiveTransitionReduced,
+} from './features.motion'
 
 function FeaturesHeading() {
   return (
@@ -36,26 +41,43 @@ function FeatureHeading({ id, title, className = '' }) {
     </h3>
   )
 }
-function FeatureCard({ headline, description, active, onSelect }) {
+function FeatureCard({ headline, description, active, onSelect, activeLayoutId }) {
+  const reduceMotion = useReducedMotion()
+  const activeTransition = reduceMotion
+    ? featureCardActiveTransitionReduced
+    : featureCardActiveTransition
+
   return (
-    <button
+    <motion.button
       type="button"
       onClick={onSelect}
-      className={`w-full cursor-pointer rounded-md border border-transparent p-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 lg:p-6 ${
-        active ? 'bg-white shadow-lg' : 'bg-transparent shadow-none hover:bg-white/60'
+      layout
+      className={`relative w-full cursor-pointer rounded-md border border-transparent bg-transparent p-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 lg:p-6 ${
+        !active ? 'hover:bg-white/60' : ''
       }`}
     >
-      <div className="flex flex-col items-start gap-3 lg:flex-row lg:items-center">
-        <FeatherIcon name="layers" size={20} className="text-gray-900" />
-        <h4 className="text-lg font-medium text-gray-900">{headline}</h4>
+      {active ? (
+        <motion.div
+          layoutId={activeLayoutId}
+          className="absolute inset-0 rounded-md bg-white shadow-lg"
+          transition={activeTransition}
+        />
+      ) : null}
+      <div className="relative z-10">
+        <div className="flex flex-col items-start gap-3 lg:flex-row lg:items-center">
+          <FeatherIcon name="layers" size={20} className="text-gray-900" />
+          <h4 className="text-lg font-medium text-gray-900">{headline}</h4>
+        </div>
+        <p className="mt-2 text-md text-gray-600">{description}</p>
       </div>
-      <p className="mt-2 text-md text-gray-600">{description}</p>
-    </button>
+    </motion.button>
   )
 }
-function FeatureContent({ items, activeItemId, onSelectItem }) {
+function FeatureContent({ items, activeItemId, onSelectItem, sectionId }) {
+  const activeLayoutId = `feature-card-active-${sectionId}`
+
   return (
-    <div className="flex flex-col rounded-lg bg-[#EBEBE5] p-1 gap-1">
+    <div className="flex flex-col gap-1 rounded-lg bg-[#EBEBE5] p-1">
       {items.map((item) => (
         <FeatureCard
           key={item.id}
@@ -63,6 +85,7 @@ function FeatureContent({ items, activeItemId, onSelectItem }) {
           description={item.description}
           active={activeItemId === item.id}
           onSelect={() => onSelectItem(item.id)}
+          activeLayoutId={activeLayoutId}
         />
       ))}
     </div>
@@ -88,6 +111,7 @@ function FeatureSection({ section, reversed }) {
       </div>
       <div className={`lg:col-span-6 ${textCol} lg:row-start-2 lg:self-end`}>
         <FeatureContent
+          sectionId={section.id}
           items={section.items}
           activeItemId={activeItemId}
           onSelectItem={setActiveItemId}
