@@ -6,7 +6,7 @@ export default function ValueIntro() {
   return (
     <section aria-labelledby="value-intro-heading" className="pt-16 pb-20 lg:pt-20">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 bg-blue-900">
           <div className="lg:col-span-8">
             <SectionHeading
               eyebrow={valueIntro.eyebrow}

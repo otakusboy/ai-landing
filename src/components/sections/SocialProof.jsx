@@ -1,36 +1,16 @@
 import Container from '../layout/Container'
+import PartnerLogoTicker from './PartnerLogoTicker'
 import { partnerLogos, socialProofIntro } from '../../data/socialProof'
 
 export default function SocialProof() {
   return (
-    <section aria-labelledby="social-proof-heading" className="bg-white py-16 lg:py-20">
+    <section aria-labelledby="social-proof-heading" className="py-20 lg:py-20">
       <Container>
-        <p
-          id="social-proof-heading"
-          className="max-w-2xl text-xl text-gray-600"
-        >
+        <p id="social-proof-heading" className="max-w-md text-lg text-gray-400 text-center mx-auto">
           {socialProofIntro}
         </p>
-
-        <div className="my-8 lg:my-8">
-          <ul
-            className="flex flex-wrap items-center gap-x-10 gap-y-6 lg:gap-x-14"
-            aria-label="Partner companies"
-          >
-            {partnerLogos.map((logo) => (
-              <li key={logo.id}>
-                <div
-                  className="flex h-10 min-w-[120px] items-center justify-center rounded border border-gray-200 bg-gray-50 px-4"
-                  role="img"
-                  aria-label={`${logo.name} logo`}
-                >
-                  <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    {logo.name}
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <div className="-mx-4 mt-12 w-[calc(100%+2rem)] overflow-hidden sm:-mx-6 sm:w-[calc(100%+3rem)] lg:-mx-8 lg:w-[calc(100%+4rem)]">
+          <PartnerLogoTicker logos={partnerLogos()} />
         </div>
       </Container>
     </section>
