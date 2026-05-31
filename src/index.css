@@ -49,3 +49,8 @@ a:where(:not([data-ui='button'])):hover {
 header[data-nav-variant='top'] [data-nav-link]:hover {
   color: white;
 }
+
+/* Navbar after scroll — nav links hover to black instead of global blue. */
+header[data-nav-variant='scrolled'] [data-nav-link]:hover {
+  color: var(--color-neutral-900);
+}
