@@ -55,7 +55,7 @@ function FeatureCard({ headline, description, active, onSelect }) {
 }
 function FeatureContent({ items, activeItemId, onSelectItem }) {
   return (
-    <div className="flex flex-col rounded-lg bg-[#EBEBE5] p-1">
+    <div className="flex flex-col rounded-lg bg-[#EBEBE5] p-1 gap-1">
       {items.map((item) => (
         <FeatureCard
           key={item.id}

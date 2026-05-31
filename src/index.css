@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-olive-50 font-sans text-gray-900 antialiased text-balance;
+    @apply bg-olive-50 font-sans text-gray-900 antialiased;
     letter-spacing: -0.01em;
     line-height: 1.15;
     font-weight: 400;
@@ -25,10 +25,12 @@
     font-family: var(--font-display);
     letter-spacing: -0.03em;
     line-height: 1.1;
+    text-wrap: balance;
   }
   h3 {
     font-family: var(--font-display-alternative);
-    letter-spacing: -0.03em;
+    text-wrap: balance;
+    /* letter-spacing: -0.03em; */
     line-height: 1.1;
   }
 
