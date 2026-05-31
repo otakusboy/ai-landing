@@ -24,8 +24,6 @@ This project is a modular single-page marketing site with a sticky, theme-aware 
 
 Use this prompt to regenerate or extend the project with the same constraints:
 
-**Click to expand full master prompt**
-
 Build a production-ready corporate landing page using **React**, **Vite**, and **Tailwind CSS**.
 
 **Architecture**
