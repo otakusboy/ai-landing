@@ -8,10 +8,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-blue-900);
   }
 
   body {
-    @apply bg-gray-50 font-sans text-gray-900 antialiased text-balance;
+    @apply bg-olive-50 font-sans text-gray-900 antialiased text-balance;
     letter-spacing: -0.01em;
     line-height: 1.15;
     font-weight: 400;
