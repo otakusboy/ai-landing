@@ -22,9 +22,7 @@ export default function SectionHeading({
         </TitleTag>
       )}
       {description && (
-        <p
-          className={`mt-4 max-w-3xl text-base text-gray-600 sm:text-lg ${descriptionClassName}`}
-        >
+        <p className={`mt-4 max-w-3xl text-base text-gray-600 sm:text-lg ${descriptionClassName}`}>
           {description}
         </p>
       )}
