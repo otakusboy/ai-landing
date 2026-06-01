@@ -5,7 +5,15 @@ import ImagePlaceholder from '../ui/ImagePlaceholder'
 import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
 import { testimonials } from '../../data/testimonial'
 import { cn } from '@/lib/cn'
-import { focusRing, sectionPy, stackGapContent, testimonialImage } from '@/lib/sectionStyles'
+import { focusRing, gridGapLg, sectionPy, testimonialImage } from '@/lib/sectionStyles'
+
+const testimonialLayout = cn(
+  'flex flex-col',
+  gridGapLg,
+  'lg:flex-row lg:items-stretch',
+)
+const testimonialImageCol = 'w-full lg:w-5/12 lg:max-w-[480px] lg:shrink-0'
+const testimonialContentCol = 'flex min-w-0 flex-1 flex-col gap-6 md:gap-7 lg:justify-between'
 
 const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-2.5 sm:py-3', focusRing)
 const progressFillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
@@ -73,18 +81,33 @@ export default function Testimonial() {
   return (
     <section aria-labelledby="testimonial-heading" className={cn('bg-olive-100', sectionPy)}>
       <Container>
-        <div className={cn('flex flex-col', stackGapContent)}>
-          <AnimatePresence mode="wait">
-            <Slide id={active.id}>
-              <ImagePlaceholder capTabletHeight={false} src={active.image} label={active.imageLabel} className={testimonialImage} />
-            </Slide>
-          </AnimatePresence>
-          <AnimatePresence mode="wait">
-            <Slide id={active.id} slideY>
-              <TestimonialSlide item={active} />
-            </Slide>
-          </AnimatePresence>
-          <TestimonialProgress items={testimonials} activeId={activeId} progressKey={progressKey} onSelect={select} onComplete={next} />
+        <div className={testimonialLayout}>
+          <div className={testimonialImageCol}>
+            <AnimatePresence mode="wait">
+              <Slide id={active.id}>
+                <ImagePlaceholder
+                  capTabletHeight={false}
+                  src={active.image}
+                  label={active.imageLabel}
+                  className={testimonialImage}
+                />
+              </Slide>
+            </AnimatePresence>
+          </div>
+          <div className={testimonialContentCol}>
+            <AnimatePresence mode="wait">
+              <Slide id={active.id} slideY>
+                <TestimonialSlide item={active} />
+              </Slide>
+            </AnimatePresence>
+            <TestimonialProgress
+              items={testimonials}
+              activeId={activeId}
+              progressKey={progressKey}
+              onSelect={select}
+              onComplete={next}
+            />
+          </div>
         </div>
       </Container>
     </section>
