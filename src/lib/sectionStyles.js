@@ -12,9 +12,13 @@ export const gridGapLg = 'gap-10 lg:gap-16'
 export const headingH2 =
   'text-2xl font-semibold tracking-normal text-gray-900 sm:text-3xl lg:text-4xl'
 
-export const headingH3 = 'text-lg font-semibold text-gray-900 sm:text-xl'
+export const headingH2Inverse =
+  'text-2xl font-semibold tracking-normal text-white sm:text-3xl lg:text-4xl'
+
+export const headingH3 = 'font-family-display-alternative text-lg font-medium text-gray-900 sm:text-xl'
 
 export const bodyMd = 'text-base text-gray-600 sm:text-lg'
+export const bodyMdInverse = 'text-base text-white/80 sm:text-lg'
 export const bodySm = 'text-sm text-gray-600 sm:text-base'
 
 export const focusRing =
@@ -23,4 +27,4 @@ export const focusRing =
 export const cardSurface = 'rounded-md border border-gray-200 bg-white'
 
 export const cardGrid3 =
-  'mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3'
+  'mt-20 grid grid-cols-1 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3'

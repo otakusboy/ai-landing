@@ -96,6 +96,39 @@ export function getTestimonialProgressTransition(reduceMotion) {
     : { duration: testimonialAutoplayMs / 1000, ease: 'linear' }
 }
 
+// ——— Use cases (card reveal on scroll) ———
+export const useCaseCardRevealEase = [0.22, 1, 0.36, 1]
+export const useCaseCardReveal = {
+  hidden: { opacity: 0, x: -28 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.55, ease: useCaseCardRevealEase },
+  },
+}
+export const useCaseCardGrid = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.04 },
+  },
+}
+export function getUseCaseCardMotion(reduceMotion) {
+  if (!reduceMotion) {
+    return { card: useCaseCardReveal, grid: useCaseCardGrid }
+  }
+  const instant = { duration: 0 }
+  return {
+    card: {
+      hidden: { opacity: 1, x: 0 },
+      visible: { opacity: 1, x: 0, transition: instant },
+    },
+    grid: {
+      hidden: {},
+      visible: { transition: { staggerChildren: 0, delayChildren: 0 } },
+    },
+  }
+}
+
 // ——— Statistics (count-up values) ———
 export const statCountTransition = { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
 export function AnimatedStatValue({ value, className = 'text-4xl font-light text-gray-900 sm:text-5xl' }) {

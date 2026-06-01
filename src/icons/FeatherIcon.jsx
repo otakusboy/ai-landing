@@ -3,7 +3,7 @@ import { featherToSvg } from './feather'
 export default function FeatherIcon({
   name,
   size = 24,
-  strokeWidth = 2,
+  strokeWidth = 1.5,
   className = '',
   title,
   ...props
