@@ -5,9 +5,9 @@ import ImagePlaceholder from '../ui/ImagePlaceholder'
 import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
 import { testimonials } from '../../data/testimonial'
 import { cn } from '@/lib/cn'
-import { containerGrid12, focusRing, gridGapLg, sectionPy } from '@/lib/sectionStyles'
+import { focusRing, sectionPy, stackGapContent, testimonialImage } from '@/lib/sectionStyles'
 
-const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-3', focusRing)
+const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-2.5 sm:py-3', focusRing)
 const progressFillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
 
 function Slide({ id, slideY, children }) {
@@ -23,7 +23,7 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
   const progressTransition = getTestimonialProgressTransition(reduceMotion)
   const activeIndex = items.findIndex((item) => item.id === activeId)
   return (
-    <div className="mt-10 flex gap-2" role="tablist" aria-label="Testimonial slides">
+    <div className="flex gap-2" role="tablist" aria-label="Testimonial slides">
       {items.map((item, index) => {
         const isActive = item.id === activeId
         return (
@@ -43,12 +43,12 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
 
 function TestimonialSlide({ item }) {
   return (
-    <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`}>
-      <div className="group mb-10 flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
+    <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`} className="flex flex-col gap-6">
+      <div className="group flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
         <img src={item.companyLogo} alt="" className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0" />
       </div>
       <h2 id="testimonial-heading" className="font-display-alternative text-lg font-medium tracking-normal text-gray-800 sm:text-xl lg:text-3xl">&ldquo;{item.quote}&rdquo;</h2>
-      <footer className="mt-10">
+      <footer>
         <cite className="not-italic">
           <span className="block text-base font-medium text-gray-900">{item.clientName}</span>
           <span className="mt-2 block text-sm text-gray-600">{item.companyName}</span>
@@ -73,23 +73,19 @@ export default function Testimonial() {
   return (
     <section aria-labelledby="testimonial-heading" className={cn('bg-olive-100', sectionPy)}>
       <Container>
-        <div className={cn(containerGrid12, gridGapLg, 'items-start')}>
-          <div className="lg:col-span-5">
-            <AnimatePresence mode="wait">
-              <Slide id={active.id}>
-                <ImagePlaceholder src={active.image} label={active.imageLabel} className="aspect-[3/4] w-full rounded-md object-top lg:aspect-auto lg:h-[450px]" />
-              </Slide>
-            </AnimatePresence>
-          </div>
-          <div className="mt-8 lg:col-span-7 lg:ml-8 lg:mt-0">
-            <AnimatePresence mode="wait">
-              <Slide id={active.id} slideY>
-                <TestimonialSlide item={active} />
-              </Slide>
-            </AnimatePresence>
-          </div>
+        <div className={cn('flex flex-col', stackGapContent)}>
+          <AnimatePresence mode="wait">
+            <Slide id={active.id}>
+              <ImagePlaceholder capTabletHeight={false} src={active.image} label={active.imageLabel} className={testimonialImage} />
+            </Slide>
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <Slide id={active.id} slideY>
+              <TestimonialSlide item={active} />
+            </Slide>
+          </AnimatePresence>
+          <TestimonialProgress items={testimonials} activeId={activeId} progressKey={progressKey} onSelect={select} onComplete={next} />
         </div>
-        <TestimonialProgress items={testimonials} activeId={activeId} progressKey={progressKey} onSelect={select} onComplete={next} />
       </Container>
     </section>
   )

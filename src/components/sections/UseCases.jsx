@@ -3,7 +3,7 @@ import Container from '../layout/Container'
 import SectionHeading from '../ui/SectionHeading'
 import { useCases, useCasesContent } from '../../data/useCases'
 import { complianceBadges, complianceContent } from '../../data/compliance'
-import { cardGrid3, headingH3, bodySm, headingH2Inverse, sectionPy } from '@/lib/sectionStyles'
+import { cardGrid3, cardPaddingMd, headingH3, bodySm, headingH2Inverse, sectionContentMt, sectionPy } from '@/lib/sectionStyles'
 import { cn } from '@/lib/cn'
 import { FeatherIcon } from '@/icons'
 import ComplianceLogo from '../ui/ComplianceLogo'
@@ -13,10 +13,10 @@ const DEFAULT_USE_CASE_ICON = 'box'
 
 function UseCaseCard({ title, description, icon = DEFAULT_USE_CASE_ICON, variants }) {
   return (
-    <motion.article variants={variants} className="flex flex-col gap-2 bg-olive-900 p-6 lg:p-8 rounded-xs">
+    <motion.article variants={variants} className={cn('flex min-h-[220px] flex-col gap-2 rounded-xs bg-olive-900 sm:min-h-0', cardPaddingMd)}>
       <FeatherIcon name={icon} size={40} className="justify-start text-olive-50" />
-      <h3 className={headingH3,'mt-[80px] font-regular text-xl tracking-normal font-medium text-olive-50'}>{title}</h3>
-      <p className={cn(bodySm, 'mt-3, text-olive-500 text-base')}>{description}</p>
+      <h3 className={cn(headingH3, 'mt-auto font-regular text-xl font-medium tracking-normal text-olive-50')}>{title}</h3>
+      <p className={cn(bodySm, 'mt-3 text-base text-olive-500')}>{description}</p>
     </motion.article>
   )
 }
@@ -52,7 +52,7 @@ export default function UseCases() {
             {complianceContent.title}
           </h3>
           <motion.ul
-            className="mt-16 grid grid-cols-2 gap-10 sm:grid-cols-4 sm:gap-8 lg:mt-24"
+            className={cn(sectionContentMt, 'grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:gap-6 lg:gap-10')}
             aria-label="Security and compliance certifications"
             variants={complianceGridVariants}
             initial="hidden"

@@ -3,7 +3,8 @@ import PartnerLogoTicker from './PartnerLogoTicker'
 import { partnerLogos, socialProofIntro } from '../../data/socialProof'
 import { sectionPyLoose } from '@/lib/sectionStyles'
 
-const tickerBleed = '-mx-4 mt-14 w-[calc(100%+2rem)] overflow-hidden sm:-mx-6 sm:w-[calc(100%+3rem)] lg:-mx-8 lg:w-[calc(100%+4rem)]'
+const tickerBleed =
+  '-mx-5 mt-10 w-[calc(100%+2.5rem)] overflow-hidden sm:-mx-6 sm:mt-12 sm:w-[calc(100%+3rem)] md:mt-10 lg:-mx-8 lg:mt-14 lg:w-[calc(100%+4rem)]'
 
 export default function SocialProof() {
   return (

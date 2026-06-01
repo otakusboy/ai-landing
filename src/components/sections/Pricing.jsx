@@ -4,11 +4,14 @@ import SectionHeading from '../ui/SectionHeading'
 import { FeatherIcon } from '@/icons'
 import { pricingContent, pricingPlans } from '../../data/pricing'
 import { cn } from '@/lib/cn'
-import { cardSurface, sectionPy } from '@/lib/sectionStyles'
+import { cardSurface, pricingCardLast, pricingGrid, sectionPy } from '@/lib/sectionStyles'
 
-const pricingCardBase = cn(cardSurface, 'flex h-full flex-col p-10')
+const pricingCardBase = cn(cardSurface, 'flex h-full flex-col p-6 sm:p-8 lg:p-10')
 const pricingDisplayFont = 'font-display-alternative'
 const pricingDivider = 'border-t border-olive-300'
+const pricingInsetPt = 'pt-6 sm:pt-8 lg:pt-10'
+const pricingInsetMt = 'mt-6 sm:mt-8 lg:mt-10'
+const pricingInsetMtSm = 'mt-5 sm:mt-6 lg:mt-8'
 
 function PricingFeatureList({ items }) {
   return (
@@ -27,9 +30,9 @@ function PricingFeatures({ groups }) {
   if (!groups?.length) return null
 
   return (
-    <div className="pt-10">
+    <div className={pricingInsetPt}>
       {groups.map((group, index) => (
-        <div key={`${group.label}-${index}`} className={index > 0 ? 'pt-10' : undefined}>
+        <div key={`${group.label}-${index}`} className={index > 0 ? pricingInsetPt : undefined}>
           <p className="text-sm font-semibold text-olive-950">{group.label}</p>
           <div className="mt-4">
             <PricingFeatureList items={group.items} />
@@ -40,9 +43,9 @@ function PricingFeatures({ groups }) {
   )
 }
 
-function PricingCard({ plan }) {
+function PricingCard({ plan, className }) {
   return (
-    <article className={cn(pricingCardBase, plan.highlighted ? 'border-olive-700 ring-1 rounded-xs' : 'rounded-xs')}>
+    <article className={cn(pricingCardBase, plan.highlighted ? 'border-olive-700 ring-1 rounded-xs' : 'rounded-xs', className)}>
       <div className="flex items-start justify-between gap-3">
         <p className={cn(pricingDisplayFont, 'text-base font-normal text-olive-900')}>{plan.name}</p>
         {plan.highlighted ? (
@@ -54,18 +57,18 @@ function PricingCard({ plan }) {
         {plan.period ? <span className="text-sm text-gray-600">{plan.period}</span> : null}
       </div>
 
-      <hr className={cn(pricingDivider, 'mt-8')} />
+      <hr className={cn(pricingDivider, pricingInsetMtSm)} />
 
-      <div className="flex flex-1 flex-col pt-10">
+      <div className={cn('flex flex-1 flex-col', pricingInsetPt)}>
         <h3 className="text-xl font-light text-olive-700">{plan.whatsIncludedTitle}</h3>
         <PricingFeatures groups={plan.featureGroups} />
       </div>
 
-      <hr className={cn(pricingDivider, 'mt-10')} />
+      <hr className={cn(pricingDivider, pricingInsetMt)} />
 
       <Button
         variant={plan.highlighted ? 'primary' : 'secondary'}
-        className="mt-10 w-full cursor-pointer"
+        className={cn(pricingInsetMt, 'w-full cursor-pointer')}
       >
         {plan.cta}
       </Button>
@@ -74,13 +77,19 @@ function PricingCard({ plan }) {
 }
 
 export default function Pricing() {
+  const lastPlanIndex = pricingPlans.length - 1
+
   return (
     <section id="pricing" aria-labelledby="pricing-heading" className={cn('bg-white', sectionPy)}>
       <Container>
         <SectionHeading className="text-center" title={pricingContent.title} description={pricingContent.description} titleId="pricing-heading" />
-        <div className="mt-16 grid grid-cols-1 gap-2 lg:mt-24 lg:grid-cols-3">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.id} plan={plan} />
+        <div className={pricingGrid}>
+          {pricingPlans.map((plan, index) => (
+            <PricingCard
+              key={plan.id}
+              plan={plan}
+              className={index === lastPlanIndex ? pricingCardLast : undefined}
+            />
           ))}
         </div>
       </Container>

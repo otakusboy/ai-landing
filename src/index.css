@@ -10,7 +10,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-blue-900);
+    background-color: var(--color-olive-200);
   }
 
   body {
@@ -51,7 +51,7 @@
 /* Unlayered so hover wins over per-link text utilities (e.g. navbar). */
 a:where(:not([data-ui='button'])):hover {
   font-weight: 500;
-  color: var(--color-blue-900);
+  color: var(--color-olive-900);
 }
 
 /* Navbar over hero — nav links hover to full white instead of global blue. */

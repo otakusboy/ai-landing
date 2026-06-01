@@ -16,7 +16,7 @@ export default function Hero() {
     <>
       <Navbar />
       <section id="hero" aria-labelledby="hero-heading" className={heroSectionClass} style={{ backgroundImage: `url('${heroContent.backgroundImage}')` }}>
-        <Container className="relative z-10 flex flex-1 flex-col justify-end pb-[100px]">
+        <Container className="relative z-10 flex flex-1 flex-col justify-end pb-16 sm:pb-24 lg:pb-[100px]">
           <div className="mx-auto w-full max-w-[650px] text-center">
             <h1 id="hero-heading" className="text-4xl font-regular leading-[1.15] text-white sm:text-6xl lg:text-6xl">{heroContent.title}</h1>
             <p className="mx-auto mt-3 max-w-prose text-base leading-relaxed text-white/90 sm:text-lg">{heroContent.description}</p>

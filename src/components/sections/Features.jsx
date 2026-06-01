@@ -6,12 +6,21 @@ import SectionHeading from '../ui/SectionHeading'
 import { valueIntro, valueSections } from '../../data/valueContent'
 import { featureCardActiveTransition, featureCardActiveTransitionReduced } from '@/motion'
 import { cn } from '@/lib/cn'
-import { focusRing, sectionPyLoose } from '@/lib/sectionStyles'
+import { contentImageTabletMax, focusRing, sectionContentMt, sectionPyLoose, stackGapSection } from '@/lib/sectionStyles'
 
-const featureImageClass = 'h-[300px] max-h-[300px] w-full rounded-md object-cover object-top lg:h-auto lg:min-h-[500px] lg:max-h-[500px]'
+const featureImageClass = cn(
+  'h-[300px] w-full rounded-md',
+  contentImageTabletMax,
+  'lg:h-auto lg:min-h-[500px] lg:max-h-[500px]',
+)
 const featureHeadingClass = 'text-2xl font-regular tracking-tight text-gray-900 sm:text-2xl lg:text-3xl'
-const featureCardBase = cn('relative w-full cursor-pointer rounded-md border border-transparent bg-transparent p-4 text-left lg:p-6', focusRing)
-const featureSectionGridClass = cn('grid min-h-0 grid-cols-1 items-stretch gap-8 lg:min-h-[500px] lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-10')
+const featureCardBase = cn(
+  'relative w-full cursor-pointer rounded-md border border-transparent bg-transparent p-3.5 text-left sm:p-4 md:p-5 lg:p-6',
+  focusRing,
+)
+const featureSectionGridClass = cn(
+  'grid min-h-0 grid-cols-1 items-stretch gap-6 md:gap-6 lg:min-h-[500px] lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-10',
+)
 
 function FeaturesHeading() {
   return (
@@ -80,7 +89,7 @@ export default function Features() {
     <section id="about" aria-labelledby="features-heading" className={cn('bg-olive-100', sectionPyLoose)}>
       <Container>
         <FeaturesHeading />
-        <div className="mt-16 flex flex-col gap-16 sm:mt-16 sm:gap-16 lg:mt-24 lg:gap-20">
+        <div className={cn(sectionContentMt, 'flex flex-col', stackGapSection)}>
           {valueSections.map((section, index) => (
             <FeatureSection key={section.id} section={section} reversed={index % 2 === 1} />
           ))}

@@ -5,7 +5,7 @@ import { faqItems } from '../../data/faq'
 import FeatherIcon from '@/icons/FeatherIcon'
 import { cn } from '@/lib/cn'
 import { getFaqPanelTransition } from '@/motion'
-import { focusRing, headingH2, sectionPy } from '@/lib/sectionStyles'
+import { focusRing, headingH2, sectionContentMtXL, sectionPy } from '@/lib/sectionStyles'
 
 const faqToggleClass = cn(
   'group flex w-full cursor-pointer items-start justify-between gap-4 text-left text-lg font-medium sm:text-lg lg:text-xl',
@@ -25,7 +25,7 @@ function FAQItem({ item, open, onToggle }) {
   const panelId = `${item.id}-panel`
 
   return (
-    <div className="border-b border-gray-200 py-6 first:pt-0 last:border-b-0">
+    <div className="border-b border-gray-200 py-5 first:pt-0 last:border-b-0 md:py-5">
       <h3 id={headingId}>
         <button
           type="button"
@@ -55,7 +55,7 @@ function FAQItem({ item, open, onToggle }) {
             transition={panelTransition}
             className="overflow-hidden"
           >
-            <div className="pt-4 pr-8">
+            <div className="pt-3 pr-2 sm:pt-4 sm:pr-8">
               <p className="text-base text-gray-600">{item.answer}</p>
             </div>
           </motion.div>
@@ -78,7 +78,7 @@ export default function FAQ() {
         <h2 id="faq-heading" className={cn(headingH2, 'text-center')}>
           Common questions about our core services
         </h2>
-        <div className="mx-auto mt-24 max-w-4xl">
+        <div className={cn('mx-auto max-w-4xl', sectionContentMtXL)}>
           {faqItems.map((item) => (
             <FAQItem
               key={item.id}
