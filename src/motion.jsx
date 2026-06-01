@@ -87,6 +87,15 @@ export const featureCardActiveTransition = {
 }
 export const featureCardActiveTransitionReduced = { duration: 0 }
 
+// ——— Testimonial (carousel progress + slides) ———
+export const testimonialAutoplayMs = 10000
+export const testimonialSlideTransition = { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
+export function getTestimonialProgressTransition(reduceMotion) {
+  return reduceMotion
+    ? { duration: 0 }
+    : { duration: testimonialAutoplayMs / 1000, ease: 'linear' }
+}
+
 // ——— Statistics (count-up values) ———
 export const statCountTransition = { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
 export function AnimatedStatValue({ value, className = 'text-4xl font-light text-gray-900 sm:text-5xl' }) {
