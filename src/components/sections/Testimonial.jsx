@@ -3,22 +3,16 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import Container from '../layout/Container'
 import ImagePlaceholder from '../ui/ImagePlaceholder'
 import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
-// Company logo images come from partnerLogos in src/data/socialProof.js (SocialProof ticker).
 import { testimonials } from '../../data/testimonial'
+import { cn } from '@/lib/cn'
+import { containerGrid12, focusRing, gridGapLg, sectionPy } from '@/lib/sectionStyles'
 
-const tabBtnClass =
-  'flex-1 cursor-pointer rounded-full py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900'
-const fillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
+const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-3', focusRing)
+const progressFillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
 
 function Slide({ id, slideY, children }) {
   return (
-    <motion.div
-      key={id}
-      initial={{ opacity: 0, ...(slideY ? { y: 12 } : {}) }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, ...(slideY ? { y: -12 } : {}) }}
-      transition={testimonialSlideTransition}
-    >
+    <motion.div key={id} initial={{ opacity: 0, ...(slideY ? { y: 12 } : {}) }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, ...(slideY ? { y: -12 } : {}) }} transition={testimonialSlideTransition}>
       {children}
     </motion.div>
   )
@@ -29,37 +23,15 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
   const progressTransition = getTestimonialProgressTransition(reduceMotion)
   const activeIndex = items.findIndex((item) => item.id === activeId)
   return (
-    <div className="mt-10 flex gap-2 lg:mt-10" role="tablist" aria-label="Testimonial slides">
+    <div className="mt-10 flex gap-2" role="tablist" aria-label="Testimonial slides">
       {items.map((item, index) => {
         const isActive = item.id === activeId
         return (
-          <motion.button
-            key={item.id}
-            type="button"
-            role="tab"
-            id={`testimonial-tab-${item.id}`}
-            aria-selected={isActive}
-            aria-controls={`testimonial-panel-${item.id}`}
-            aria-label={`Show testimonial from ${item.clientName}`}
-            onClick={() => onSelect(item.id)}
-            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-            transition={{ duration: 0.15 }}
-            className={tabBtnClass}
-          >
+          <motion.button key={item.id} type="button" role="tab" id={`testimonial-tab-${item.id}`} aria-selected={isActive} aria-controls={`testimonial-panel-${item.id}`} aria-label={`Show testimonial from ${item.clientName}`} onClick={() => onSelect(item.id)} whileTap={reduceMotion ? undefined : { scale: 0.98 }} transition={{ duration: 0.15 }} className={tabButtonClass}>
             <span className="relative block h-1 w-full overflow-hidden rounded-full bg-gray-200">
-              {index < activeIndex ? <span className={fillClass} aria-hidden /> : null}
+              {index < activeIndex ? <span className={progressFillClass} aria-hidden /> : null}
               {isActive ? (
-                <motion.span
-                  key={progressKey}
-                  className={`${fillClass} origin-left`}
-                  initial={{ scaleX: reduceMotion ? 1 : 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={progressTransition}
-                  onAnimationComplete={() => {
-                    if (!reduceMotion && item.id === activeId) onComplete()
-                  }}
-                  aria-hidden
-                />
+                <motion.span key={progressKey} className={cn(progressFillClass, 'origin-left')} initial={{ scaleX: reduceMotion ? 1 : 0 }} animate={{ scaleX: 1 }} transition={progressTransition} onAnimationComplete={() => { if (!reduceMotion && item.id === activeId) onComplete() }} aria-hidden />
               ) : null}
             </span>
           </motion.button>
@@ -72,23 +44,13 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
 function TestimonialSlide({ item }) {
   return (
     <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`}>
-      <div
-        className="group mb-10 flex h-10 cursor-pointer items-center"
-        role="img"
-        aria-label={`${item.companyLogoLabel} logo`}
-      >
-        <img
-          src={item.companyLogo}
-          alt=""
-          className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0"
-        />
+      <div className="group mb-10 flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
+        <img src={item.companyLogo} alt="" className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0" />
       </div>
-      <h2 id="testimonial-heading" className="text-lg tracking-normal font-medium font-display-alternative text-gray-800 sm:text-xl lg:text-3xl">
-        &ldquo;{item.quote}&rdquo;
-      </h2>
+      <h2 id="testimonial-heading" className="font-display-alternative text-lg font-medium tracking-normal text-gray-800 sm:text-xl lg:text-3xl">&ldquo;{item.quote}&rdquo;</h2>
       <footer className="mt-10">
         <cite className="not-italic">
-          <span className="block text-md font-medium text-gray-900">{item.clientName}</span>
+          <span className="block text-base font-medium text-gray-900">{item.clientName}</span>
           <span className="mt-2 block text-sm text-gray-600">{item.companyName}</span>
         </cite>
       </footer>
@@ -109,21 +71,17 @@ export default function Testimonial() {
     select(testimonials[(index + 1) % testimonials.length].id)
   }
   return (
-    <section aria-labelledby="testimonial-heading" className="bg-olive-100 py-16 lg:py-24">
+    <section aria-labelledby="testimonial-heading" className={cn('bg-olive-100', sectionPy)}>
       <Container>
-        <div className="grid grid-cols-1 items-top gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className={cn(containerGrid12, gridGapLg, 'items-start')}>
           <div className="lg:col-span-5">
             <AnimatePresence mode="wait">
               <Slide id={active.id}>
-                <ImagePlaceholder
-                  src={active.image}
-                  label={active.imageLabel}
-                  className="aspect-[3/4] w-full rounded-md object-top lg:aspect-auto lg:h-[450px]"
-                />
+                <ImagePlaceholder src={active.image} label={active.imageLabel} className="aspect-[3/4] w-full rounded-md object-top lg:aspect-auto lg:h-[450px]" />
               </Slide>
             </AnimatePresence>
           </div>
-          <div className="lg:col-span-7 mt-8 ml-8">
+          <div className="mt-8 lg:col-span-7 lg:ml-8 lg:mt-0">
             <AnimatePresence mode="wait">
               <Slide id={active.id} slideY>
                 <TestimonialSlide item={active} />
@@ -131,13 +89,7 @@ export default function Testimonial() {
             </AnimatePresence>
           </div>
         </div>
-        <TestimonialProgress
-          items={testimonials}
-          activeId={activeId}
-          progressKey={progressKey}
-          onSelect={select}
-          onComplete={next}
-        />
+        <TestimonialProgress items={testimonials} activeId={activeId} progressKey={progressKey} onSelect={select} onComplete={next} />
       </Container>
     </section>
   )

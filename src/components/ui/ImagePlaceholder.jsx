@@ -1,3 +1,5 @@
+import { cn } from '@/lib/cn'
+
 export default function ImagePlaceholder({
   className = '',
   label = 'Placeholder image',
@@ -9,7 +11,7 @@ export default function ImagePlaceholder({
       <img
         src={src}
         alt={label}
-        className={`w-full object-cover ${aspectRatio ?? ''} ${className}`}
+        className={cn('w-full object-cover', aspectRatio, className)}
       />
     )
   }
@@ -18,7 +20,7 @@ export default function ImagePlaceholder({
     <div
       role="img"
       aria-label={label}
-      className={`bg-gray-200 ${aspectRatio ?? ''} ${className}`}
+      className={cn('bg-gray-200', aspectRatio, className)}
     />
   )
 }

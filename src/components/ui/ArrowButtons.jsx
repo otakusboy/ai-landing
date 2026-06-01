@@ -1,12 +1,17 @@
+import { cn } from '@/lib/cn'
+import { focusRing } from '@/lib/sectionStyles'
+
+const arrowButtonClass = cn(
+  'flex h-10 w-10 items-center justify-center rounded-md',
+  'border border-gray-300 bg-white text-gray-700',
+  'transition-colors hover:bg-gray-50',
+  focusRing,
+)
+
 export default function ArrowButtons({ onPrevious, onNext, label = 'Navigate items' }) {
   return (
     <div className="flex items-center gap-2" role="group" aria-label={label}>
-      <button
-        type="button"
-        onClick={onPrevious}
-        aria-label="Previous"
-        className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-      >
+      <button type="button" onClick={onPrevious} aria-label="Previous" className={arrowButtonClass}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -21,12 +26,7 @@ export default function ArrowButtons({ onPrevious, onNext, label = 'Navigate ite
           />
         </svg>
       </button>
-      <button
-        type="button"
-        onClick={onNext}
-        aria-label="Next"
-        className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-      >
+      <button type="button" onClick={onNext} aria-label="Next" className={arrowButtonClass}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"

@@ -1,3 +1,6 @@
+import { cn } from '@/lib/cn'
+import { bodyMd, headingH2 } from '@/lib/sectionStyles'
+
 export default function SectionHeading({
   eyebrow,
   title,
@@ -10,22 +13,19 @@ export default function SectionHeading({
 }) {
   return (
     <div className={className}>
-      {eyebrow && (
-        <p className="text-sm font-medium text-gray-500 uppercase">{eyebrow}</p>
-      )}
-      {title && (
-        <TitleTag
-          id={titleId}
-          className={`mt-3 text-3xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl tracking-normal ${titleClassName}`}
-        >
+      {eyebrow ? (
+        <p className="text-sm font-medium uppercase text-gray-500">{eyebrow}</p>
+      ) : null}
+      {title ? (
+        <TitleTag id={titleId} className={cn(headingH2, 'mt-3', titleClassName)}>
           {title}
         </TitleTag>
-      )}
-      {description && (
-        <p className={`mt-4 max-w-3xl text-md text-gray-600 sm:text-md lg:text-md mx-auto ${descriptionClassName}`}>
+      ) : null}
+      {description ? (
+        <p className={cn(bodyMd, 'mx-auto mt-4 max-w-3xl', descriptionClassName)}>
           {description}
         </p>
-      )}
+      ) : null}
     </div>
   )
 }
