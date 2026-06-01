@@ -6,7 +6,6 @@ import Statistics from './components/sections/Statistics'
 import Testimonial from './components/sections/Testimonial'
 import UseCases from './components/sections/UseCases'
 import Pricing from './components/sections/Pricing'
-import CTA from './components/sections/CTA'
 import FAQ from './components/sections/FAQ'
 
 export default function App() {
@@ -20,7 +19,6 @@ export default function App() {
         <Testimonial />
         <UseCases />
         <Pricing />
-        <CTA />
         <FAQ />
       </main>
       <Footer />

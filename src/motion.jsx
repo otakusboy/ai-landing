@@ -129,6 +129,45 @@ export function getUseCaseCardMotion(reduceMotion) {
   }
 }
 
+// ——— Compliance badges (rise up on scroll) ———
+export const complianceBadgeRevealEase = [0.16, 1, 0.3, 1]
+export const complianceBadgeReveal = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: complianceBadgeRevealEase },
+  },
+}
+export const complianceBadgeGrid = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.14, delayChildren: 0.08 },
+  },
+}
+export function getComplianceBadgeMotion(reduceMotion) {
+  if (!reduceMotion) {
+    return { card: complianceBadgeReveal, grid: complianceBadgeGrid }
+  }
+  const instant = { duration: 0 }
+  return {
+    card: {
+      hidden: { opacity: 1, y: 0 },
+      visible: { opacity: 1, y: 0, transition: instant },
+    },
+    grid: {
+      hidden: {},
+      visible: { transition: { staggerChildren: 0, delayChildren: 0 } },
+    },
+  }
+}
+
+// ——— FAQ (accordion panel) ———
+export const faqPanelTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+export function getFaqPanelTransition(reduceMotion) {
+  return reduceMotion ? { duration: 0 } : faqPanelTransition
+}
+
 // ——— Statistics (count-up values) ———
 export const statCountTransition = { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
 export function AnimatedStatValue({ value, className = 'text-4xl font-light text-gray-900 sm:text-5xl' }) {

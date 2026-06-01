@@ -1,8 +1,9 @@
 export const navLinks = [
   { id: 'solutions', label: 'Solutions', href: '#solutions' },
+  { id: 'compliance', label: 'Compliance', href: '#compliance' },
   { id: 'about', label: 'About', href: '#about' },
-  { id: 'resources', label: 'Resources', href: '#resources' },
   { id: 'pricing', label: 'Pricing', href: '#pricing' },
+  { id: 'contact', label: 'FAQ', href: '#contact' },
 ]
 
 export const brand = {

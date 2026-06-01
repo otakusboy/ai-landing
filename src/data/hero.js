@@ -10,8 +10,3 @@ export const heroContent = {
   backgroundImage:
     'src/assets/hero2.png',
 }
-
-export const ctaContent = {
-  title: 'Ready to transform your operations?',
-  imageLabel: 'Professional team ready to assist with your inquiry',
-}

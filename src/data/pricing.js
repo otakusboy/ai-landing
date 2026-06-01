@@ -1,7 +1,5 @@
 export const pricingContent = {
   title: 'Transparent pricing for every stage',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis.',
 }
 
 export const pricingPlans = [
@@ -10,12 +8,27 @@ export const pricingPlans = [
     name: 'Starter',
     price: '$49',
     period: '/month',
+    whatsIncludedTitle: 'What’s included',
     description: 'Lorem ipsum dolor sit amet for small teams getting started.',
-    features: [
-      'Up to 10 team members',
-      'Core workflow tools',
-      'Email support',
-      'Standard reporting',
+    featureGroups: [
+      {
+        label: 'Features',
+        items: [
+          'Up to 10 team members',
+          'Core workflow tools',
+          'Email support',
+          'Standard reporting',
+        ],
+      },
+      {
+        label: 'Features',
+        items: [
+          'Team onboarding guide',
+          'Knowledge base access',
+          'Community forum',
+          'Quarterly product updates',
+        ],
+      },
     ],
     cta: 'Get started',
     highlighted: false,
@@ -25,13 +38,28 @@ export const pricingPlans = [
     name: 'Professional',
     price: '$149',
     period: '/month',
+    whatsIncludedTitle: 'Everything you need to scale',
     description: 'Lorem ipsum dolor sit amet for growing organizations.',
-    features: [
-      'Up to 50 team members',
-      'Advanced analytics suite',
-      'Priority support',
-      'Custom integrations',
-      'Dedicated account manager',
+    featureGroups: [
+      {
+        label: 'Features',
+        items: [
+          'Up to 50 team members',
+          'Advanced analytics suite',
+          'Priority support',
+          'Custom integrations',
+          'Dedicated account manager',
+        ],
+      },
+      {
+        label: 'Features',
+        items: [
+          'SSO and role-based access',
+          'Audit logs and exports',
+          'API rate limit increases',
+          'Quarterly strategy reviews',
+        ],
+      },
     ],
     cta: 'Start free trial',
     highlighted: true,
@@ -41,13 +69,28 @@ export const pricingPlans = [
     name: 'Enterprise',
     price: 'Custom',
     period: '',
+    whatsIncludedTitle: 'Built for enterprise teams',
     description: 'Lorem ipsum dolor sit amet for large-scale operations.',
-    features: [
-      'Unlimited team members',
-      'Enterprise security controls',
-      '24/7 dedicated support',
-      'Custom SLA agreements',
-      'On-site implementation',
+    featureGroups: [
+      {
+        label: 'Features',
+        items: [
+          'Unlimited team members',
+          'Enterprise security controls',
+          '24/7 dedicated support',
+          'Custom SLA agreements',
+          'On-site implementation',
+        ],
+      },
+      {
+        label: 'Features',
+        items: [
+          'Private cloud deployment',
+          'Custom contract terms',
+          'Executive business reviews',
+          'Dedicated solutions engineer',
+        ],
+      },
     ],
     cta: 'Contact sales',
     highlighted: false,

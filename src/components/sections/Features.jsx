@@ -77,7 +77,7 @@ function FeatureSection({ section, reversed }) {
 
 export default function Features() {
   return (
-    <div aria-labelledby="features-heading" className={cn('bg-olive-100', sectionPyLoose)}>
+    <section id="about" aria-labelledby="features-heading" className={cn('bg-olive-100', sectionPyLoose)}>
       <Container>
         <FeaturesHeading />
         <div className="mt-16 flex flex-col gap-16 sm:mt-16 sm:gap-16 lg:mt-24 lg:gap-20">
@@ -86,6 +86,6 @@ export default function Features() {
           ))}
         </div>
       </Container>
-    </div>
+    </section>
   )
 }
