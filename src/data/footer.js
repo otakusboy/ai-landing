@@ -2,6 +2,8 @@ export const footerMeta = {
   brand: 'Meridian Group',
   tagline: 'Building lasting partnerships through operational excellence.',
   copyright: '© 2026 Meridian Group. All rights reserved.',
+  menuTitle: 'Menu',
+  contactTitle: 'Socials',
 }
 
 export const footerContactLinks = [

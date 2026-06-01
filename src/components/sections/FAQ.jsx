@@ -8,7 +8,7 @@ import { getFaqPanelTransition } from '@/motion'
 import { focusRing, headingH2, sectionPy } from '@/lib/sectionStyles'
 
 const faqToggleClass = cn(
-  'group flex w-full cursor-pointer items-start justify-between gap-4 text-left text-base font-semibold sm:text-lg',
+  'group flex w-full cursor-pointer items-start justify-between gap-4 text-left text-lg font-medium sm:text-lg lg:text-xl',
   focusRing,
 )
 
@@ -73,12 +73,12 @@ export default function FAQ() {
   }
 
   return (
-    <section id="contact" aria-labelledby="faq-heading" className={sectionPy}>
+    <section id="contact" aria-labelledby="faq-heading" className={cn('bg-white', sectionPy)}>
       <Container>
         <h2 id="faq-heading" className={cn(headingH2, 'text-center')}>
           Common questions about our core services
         </h2>
-        <div className="mx-auto mt-12 max-w-4xl">
+        <div className="mx-auto mt-24 max-w-4xl">
           {faqItems.map((item) => (
             <FAQItem
               key={item.id}
