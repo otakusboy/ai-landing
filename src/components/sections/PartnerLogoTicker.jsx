@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { animate, motion, useMotionValue, useReducedMotion } from 'motion/react'
+import AppImage from '../ui/AppImage'
 import { cn } from '@/lib/cn'
 
 const VELOCITY = 40
@@ -24,7 +25,7 @@ function tickerLogos(logos, setIndex) {
 function Logo({ image }) {
   return (
     <div className="flex h-[30px] max-h-[30px] shrink-0 items-center">
-      <img src={image} alt="" loading="lazy" className="h-full w-auto max-w-none object-contain grayscale transition-[filter] duration-300 hover:grayscale-0" />
+      <AppImage src={image} alt="" className="h-full w-auto max-w-none object-contain grayscale transition-[filter] duration-300 hover:grayscale-0" />
     </div>
   )
 }

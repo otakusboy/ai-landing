@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import Container from '../layout/Container'
+import AppImage from '../ui/AppImage'
 import ImagePlaceholder from '../ui/ImagePlaceholder'
 import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
 import { testimonials } from '../../data/testimonial'
@@ -53,7 +54,11 @@ function TestimonialSlide({ item }) {
   return (
     <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`} className="flex flex-col gap-6">
       <div className="group flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
-        <img src={item.companyLogo} alt="" className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0" />
+        <AppImage
+          src={item.companyLogo}
+          alt=""
+          className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+        />
       </div>
       <h2 id="testimonial-heading" className="font-display-alternative text-lg font-medium tracking-normal text-gray-800 sm:text-xl lg:text-3xl">&ldquo;{item.quote}&rdquo;</h2>
       <footer>

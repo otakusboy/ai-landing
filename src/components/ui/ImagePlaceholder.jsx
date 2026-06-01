@@ -1,5 +1,6 @@
 import { cn } from '@/lib/cn'
 import { contentImageTabletMax } from '@/lib/sectionStyles'
+import AppImage from './AppImage'
 
 export default function ImagePlaceholder({
   className = '',
@@ -7,12 +8,16 @@ export default function ImagePlaceholder({
   aspectRatio,
   src,
   capTabletHeight = true,
+  loading = 'lazy',
+  fetchPriority,
 }) {
   if (src) {
     return (
-      <img
+      <AppImage
         src={src}
         alt={label}
+        loading={loading}
+        fetchPriority={fetchPriority}
         className={cn('w-full object-cover', capTabletHeight && contentImageTabletMax, aspectRatio, className)}
       />
     )

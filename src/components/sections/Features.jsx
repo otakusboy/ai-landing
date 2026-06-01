@@ -5,6 +5,7 @@ import Container from '../layout/Container'
 import SectionHeading from '../ui/SectionHeading'
 import { valueIntro, valueSections } from '../../data/valueContent'
 import { featureCardActiveTransition, featureCardActiveTransitionReduced } from '@/motion'
+import AppImage from '../ui/AppImage'
 import { cn } from '@/lib/cn'
 import { contentImageTabletMax, focusRing, sectionContentMt, sectionPyLoose, stackGapSection } from '@/lib/sectionStyles'
 
@@ -31,7 +32,7 @@ function FeaturesHeading() {
 }
 
 function FeatureImage({ item }) {
-  return <img src={item.image} alt={item.imageLabel} className={featureImageClass} />
+  return <AppImage src={item.image} alt={item.imageLabel} className={featureImageClass} />
 }
 
 function FeatureHeading({ id, title, className }) {
