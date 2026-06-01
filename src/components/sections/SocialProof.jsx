@@ -1,5 +1,6 @@
 import Container from '../layout/Container'
 import PartnerLogoTicker from './PartnerLogoTicker'
+// Partner logos are defined in src/data/socialProof.js (also used by Testimonial).
 import { partnerLogos, socialProofIntro } from '../../data/socialProof'
 
 export default function SocialProof() {

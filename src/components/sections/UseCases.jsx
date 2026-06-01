@@ -21,7 +21,7 @@ function UseCaseCard({ title, description }) {
 
 export default function UseCases() {
   return (
-    <section id="solutions" aria-labelledby="use-cases-heading" className="py-16 lg:py-20">
+    <section id="solutions" aria-labelledby="use-cases-heading" className="py-16 lg:py-24 bg-olive-950">
       <Container>
         <SectionHeading
           title={useCasesContent.title}

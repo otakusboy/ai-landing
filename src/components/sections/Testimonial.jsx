@@ -3,11 +3,12 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import Container from '../layout/Container'
 import ImagePlaceholder from '../ui/ImagePlaceholder'
 import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
+// Company logo images come from partnerLogos in src/data/socialProof.js (SocialProof ticker).
 import { testimonials } from '../../data/testimonial'
 
 const tabBtnClass =
   'flex-1 cursor-pointer rounded-full py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900'
-const fillClass = 'pointer-events-none absolute inset-0 rounded-full bg-gray-900'
+const fillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
 
 function Slide({ id, slideY, children }) {
   return (
@@ -28,7 +29,7 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
   const progressTransition = getTestimonialProgressTransition(reduceMotion)
   const activeIndex = items.findIndex((item) => item.id === activeId)
   return (
-    <div className="mt-10 flex gap-2 lg:mt-12" role="tablist" aria-label="Testimonial slides">
+    <div className="mt-10 flex gap-2 lg:mt-10" role="tablist" aria-label="Testimonial slides">
       {items.map((item, index) => {
         const isActive = item.id === activeId
         return (
@@ -71,22 +72,24 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
 function TestimonialSlide({ item }) {
   return (
     <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`}>
-      <h3 id="testimonial-heading" className="text-lg text-gray-800 sm:text-xl lg:text-2xl">
+      <div
+        className="group mb-10 flex h-10 cursor-pointer items-center"
+        role="img"
+        aria-label={`${item.companyLogoLabel} logo`}
+      >
+        <img
+          src={item.companyLogo}
+          alt=""
+          className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+        />
+      </div>
+      <h2 id="testimonial-heading" className="text-lg tracking-normal font-medium font-display-alternative text-gray-800 sm:text-xl lg:text-3xl">
         &ldquo;{item.quote}&rdquo;
-      </h3>
-      <footer className="mt-8">
+      </h2>
+      <footer className="mt-10">
         <cite className="not-italic">
           <span className="block text-md font-medium text-gray-900">{item.clientName}</span>
           <span className="mt-2 block text-sm text-gray-600">{item.companyName}</span>
-          <div
-            className="mt-10 flex h-10 w-36 items-center justify-center rounded border border-gray-200 bg-gray-50"
-            role="img"
-            aria-label={`${item.companyLogo} logo`}
-          >
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-              {item.companyLogo}
-            </span>
-          </div>
         </cite>
       </footer>
     </blockquote>
@@ -106,20 +109,21 @@ export default function Testimonial() {
     select(testimonials[(index + 1) % testimonials.length].id)
   }
   return (
-    <section aria-labelledby="testimonial-heading" className="bg-olive-100 py-16 lg:py-20">
+    <section aria-labelledby="testimonial-heading" className="bg-olive-100 py-16 lg:py-24">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 items-top gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <AnimatePresence mode="wait">
               <Slide id={active.id}>
                 <ImagePlaceholder
+                  src={active.image}
                   label={active.imageLabel}
-                  className="aspect-[3/4] w-full rounded-md lg:aspect-auto lg:h-[480px]"
+                  className="aspect-[3/4] w-full rounded-md object-top lg:aspect-auto lg:h-[450px]"
                 />
               </Slide>
             </AnimatePresence>
           </div>
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 mt-8 ml-8">
             <AnimatePresence mode="wait">
               <Slide id={active.id} slideY>
                 <TestimonialSlide item={active} />
