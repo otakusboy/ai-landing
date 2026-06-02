@@ -6,7 +6,7 @@ export const navLinks = [
 ]
 
 export const brand = {
-  name: 'Meridian Group',
+  name: 'Veridoc - AI Legal Helper',
   href: '#hero',
   logo: {
     black: new URL('../assets/logo/Logo-black.svg', import.meta.url).href,

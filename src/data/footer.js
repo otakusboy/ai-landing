@@ -1,7 +1,7 @@
 export const footerMeta = {
-  brand: 'Meridian Group',
+  brand: 'Veridoc - AI Legal Helper',
   brandLogo: new URL('../assets/logo/Logo-white.svg', import.meta.url).href,
-  copyright: '© 2026 Meridian Group. All rights reserved.',
+  copyright: '© 2026 Veridoc. All rights reserved.',
 }
 
 export const footerCta = {
