@@ -13,10 +13,12 @@ const DEFAULT_USE_CASE_ICON = 'box'
 
 function UseCaseCard({ title, description, icon = DEFAULT_USE_CASE_ICON, variants }) {
   return (
-    <motion.article variants={variants} className={cn('flex min-h-[220px] flex-col gap-2 rounded-xs bg-olive-900 sm:min-h-0', cardPaddingMd)}>
+    <motion.article variants={variants} className={cn('flex min-h-[220px] flex-col rounded-xs bg-olive-900 sm:min-h-0', cardPaddingMd)}>
       <FeatherIcon name={icon} size={40} className="justify-start text-olive-50" />
-      <h3 className={cn(headingH3, 'mt-auto font-regular text-xl font-medium tracking-normal text-olive-50')}>{title}</h3>
-      <p className={cn(bodySm, 'mt-3 text-base text-olive-500')}>{description}</p>
+      <div className="mt-10 flex flex-col">
+        <h3 className={cn(headingH3, 'font-regular text-xl font-medium tracking-normal text-olive-50')}>{title}</h3>
+        <p className={cn(bodySm, 'mt-3 text-base text-olive-500')}>{description}</p>
+      </div>
     </motion.article>
   )
 }

@@ -9,7 +9,7 @@ import { cardSurface, pricingCardLast, pricingGrid, sectionPy } from '@/lib/sect
 const pricingCardBase = cn(cardSurface, 'flex h-full flex-col p-6 sm:p-8 lg:p-10')
 const pricingDisplayFont = 'font-display-alternative'
 const pricingDivider = 'border-t border-olive-300'
-const pricingInsetPt = 'pt-6 sm:pt-8 lg:pt-10'
+const pricingInsetPt = 'pt-6 sm:pt-8 lg:pt-8'
 const pricingInsetMt = 'mt-6 sm:mt-8 lg:mt-10'
 const pricingInsetMtSm = 'mt-5 sm:mt-6 lg:mt-8'
 
@@ -32,7 +32,10 @@ function PricingFeatures({ groups }) {
   return (
     <div className={pricingInsetPt}>
       {groups.map((group, index) => (
-        <div key={`${group.label}-${index}`} className={index > 0 ? pricingInsetPt : undefined}>
+        <div
+          key={`${group.label}-${index}`}
+          className={cn(index > 0 ? pricingInsetPt : 'md:min-h-[220px]')}
+        >
           <p className="text-sm font-semibold text-olive-950">{group.label}</p>
           <div className="mt-4">
             <PricingFeatureList items={group.items} />
@@ -47,7 +50,7 @@ function PricingCard({ plan, className }) {
   return (
     <article className={cn(pricingCardBase, plan.highlighted ? 'border-olive-700 ring-1 rounded-xs' : 'rounded-xs', className)}>
       <div className="flex items-start justify-between gap-3">
-        <p className={cn(pricingDisplayFont, 'text-base font-normal text-olive-900')}>{plan.name}</p>
+        <p className={cn(pricingDisplayFont, 'text-xl font-normal text-olive-900')}>{plan.name}</p>
         {plan.highlighted ? (
           <span className="shrink-0 bg-olive-800 px-2 py-1 text-xs font-medium text-white rounded-md uppercase">Most popular</span>
         ) : null}
@@ -60,7 +63,7 @@ function PricingCard({ plan, className }) {
       <hr className={cn(pricingDivider, pricingInsetMtSm)} />
 
       <div className={cn('flex flex-1 flex-col', pricingInsetPt)}>
-        <h3 className="text-xl font-light text-olive-700">{plan.whatsIncludedTitle}</h3>
+        <h3 className="text-md font-light text-olive-700">{plan.whatsIncludedTitle}</h3>
         <PricingFeatures groups={plan.featureGroups} />
       </div>
 

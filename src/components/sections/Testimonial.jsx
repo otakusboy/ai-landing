@@ -11,10 +11,10 @@ import { focusRing, gridGapLg, sectionPy, testimonialImage } from '@/lib/section
 const testimonialLayout = cn(
   'flex flex-col',
   gridGapLg,
-  'lg:flex-row lg:items-stretch',
+  'md:flex-row md:items-stretch',
 )
-const testimonialImageCol = 'w-full lg:w-5/12 lg:max-w-[480px] lg:shrink-0'
-const testimonialContentCol = 'flex min-w-0 flex-1 flex-col gap-6 md:gap-7 lg:justify-between'
+const testimonialImageCol = 'w-full md:w-5/12 md:max-w-[480px] md:shrink-0'
+const testimonialContentCol = 'flex min-w-0 flex-1 flex-col gap-6 md:justify-between md:gap-7'
 
 const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-2.5 sm:py-3', focusRing)
 const progressFillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
@@ -84,7 +84,7 @@ export default function Testimonial() {
     select(testimonials[(index + 1) % testimonials.length].id)
   }
   return (
-    <section aria-labelledby="testimonial-heading" className={cn('bg-olive-100', sectionPy)}>
+    <section id="testimonials" aria-labelledby="testimonial-heading" className={cn('bg-olive-100', sectionPy)}>
       <Container>
         <div className={testimonialLayout}>
           <div className={testimonialImageCol}>

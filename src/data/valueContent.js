@@ -1,8 +1,8 @@
 export const valueIntro = {
   eyebrow: 'Our Features',
-  title: 'Partnership built on lasting mutual trust',
+  title: 'Designed for modern legal teams',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'Veridoc brings together AI-powered contract review, secure workflows, and clear legal insight to help legal and business teams review faster, spot risks earlier, and move forward with greater confidence.',
 }
 
 const featureImages = {
@@ -17,21 +17,21 @@ const featureImages = {
 export const valueSections = [
   {
     id: 'value-a',
-    title: 'Command the room, every time',
+    title: 'Review With Precision',
     items: [
       {
         id: 1,
-        headline: 'Unified workflow management',
+        headline: 'AI contract analysis',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio praesent libero sed cursus ante dapibus diam.',
+          'Quickly scan agreements, surface key terms, and identify issues that need closer legal review.',
         image: featureImages[1],
         imageLabel: 'Unified workflow management',
       },
       {
         id: 2,
-        headline: 'Real-time performance insights',
+        headline: 'Risk flag detection',
         description:
-          'Sed nisi nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum praesent mauris fusce nec tellus sed augue semper.',
+          'Spot unclear clauses, missing protections, and contract language that may introduce unnecessary risk.',
         image: featureImages[2],
         imageLabel: 'Real-time performance insights',
       },
@@ -39,21 +39,21 @@ export const valueSections = [
   },
   {
     id: 'value-b',
-    title: 'Secure foundations built for enterprise scale',
+    title: 'Work With Clarity',
     items: [
       {
         id: 3,
-        headline: 'Enterprise-grade security protocols',
+        headline: 'Smarter legal summaries',
         description:
-          'Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum donec sed odio dui.',
+          'Turn dense legal documents into clear, structured insights your team can review and act on faster.',
         image: featureImages[3],
         imageLabel: 'Enterprise-grade security protocols',
       },
       {
         id: 4,
-        headline: 'Compliance-ready audit frameworks',
+        headline: 'Clause comparison tools',
         description:
-          'Morbi leo risus porta ac consectetur ac vestibulum at eros. Praesent commodo cursus magna vel scelerisque nisl consectetur.',
+          'Compare language across contracts to maintain consistency and improve decision-making across reviews.',
         image: featureImages[4],
         imageLabel: 'Compliance-ready audit frameworks',
       },
@@ -61,21 +61,21 @@ export const valueSections = [
   },
   {
     id: 'value-c',
-    title: 'Dedicated support available at every stage',
+    title: 'Move With Confidence',
     items: [
       {
         id: 5,
-        headline: 'Dedicated account management team',
+        headline: 'Secure team workflows',
         description:
-          'Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet maecenas faucibus.',
+          'Keep contract reviews organized with secure collaboration built for legal and business stakeholders.',
         image: featureImages[5],
         imageLabel: 'Dedicated account management team',
       },
       {
         id: 6,
-        headline: 'Proactive onboarding and training',
+        headline: 'Reliable review support',
         description:
-          'Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes nascetur.',
+          'Support every stage of the review process with AI assistance designed for speed, control, and trust.',
         image: featureImages[6],
         imageLabel: 'Proactive onboarding and training',
       },

@@ -1,38 +1,38 @@
 export const faqItems = [
   {
     id: 'faq-1',
-    question: 'Lorem ipsum dolor sit amet consectetur adipiscing?',
+    question: 'What is Veridoc used for?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Veridoc helps legal and business teams review contracts faster by using AI to surface key terms, flag potential risks, and organize review workflows.',
   },
   {
     id: 'faq-2',
-    question: 'Sed do eiusmod tempor incididunt ut labore et?',
+    question: 'Does Veridoc replace our lawyers?',
     answer:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'No. Veridoc is designed to assist legal professionals, not replace them. Your team stays in control of every decision while AI handles the repetitive analysis work.',
   },
   {
     id: 'faq-3',
-    question: 'Ut enim ad minim veniam quis nostrud exercitation?',
+    question: 'How secure is our contract data?',
     answer:
-      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+      'All uploaded documents are processed in a secure environment, with encryption in transit and at rest, and strict access controls to protect sensitive information.',
   },
   {
     id: 'faq-4',
-    question: 'Duis aute irure dolor in reprehenderit in voluptate?',
+    question: 'Which types of contracts does Veridoc support?',
     answer:
-      'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia dolor sit amet.',
+      'Veridoc can be used on common commercial contracts such as NDAs, MSAs, vendor agreements, sales contracts, and other standardized business documents.',
   },
   {
     id: 'faq-5',
-    question: 'Excepteur sint occaecat cupidatat non proident sunt?',
+    question: 'Can non-legal teams use Veridoc?',
     answer:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa.',
+      'Yes. Procurement, sales, and operations teams can use Veridoc to get clearer summaries and risk highlights while still collaborating closely with legal.',
   },
   {
     id: 'faq-6',
-    question: 'Sunt in culpa qui officia deserunt mollit anim?',
+    question: 'How long does onboarding take?',
     answer:
-      'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus temporibus autem quibusdam et aut officiis debitis.',
+      'Most teams can get started within a few days, with guided setup, recommended workflows, and optional training sessions for legal and business stakeholders.',
   },
 ]

@@ -16,9 +16,9 @@ export const testimonials = [
     companyLogoLabel: 'Harbor Industries',
     companyLogo: getPartnerLogoImage(1),
     quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    clientName: 'Eleanor Whitfield',
-    companyName: 'Very long name corp here',
+      'Veridoc helped our team review contracts faster, catch risk earlier, and bring more consistency to every legal decision we make.',
+    clientName: 'Jhon Morgan',
+    companyName: 'General Counsel, Northfield Partners',
   },
   {
     id: 'testimonial-2',
@@ -28,9 +28,9 @@ export const testimonials = [
     companyLogoLabel: 'Northline Group',
     companyLogo: getPartnerLogoImage(4),
     quote:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
-    clientName: 'Marcus Chen',
-    companyName: 'VP Operations, Northline Group',
+      'What used to take hours now takes minutes. Veridoc gives our legal and ops teams clearer visibility into contract risks.',
+    clientName: 'Daniel Reeves',
+    companyName: 'Head of Legal Operations, Cendro Systems',
   },
   {
     id: 'testimonial-3',
@@ -40,8 +40,8 @@ export const testimonials = [
     companyLogoLabel: 'Summit Ventures',
     companyLogo: getPartnerLogoImage(5),
     quote:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.',
-    clientName: 'Amara Okonkwo',
-    companyName: 'Director of Strategy, Summit Ventures',
+      'Veridoc brings speed, structure, and confidence to our review process without making the workflow feel more complicated.',
+    clientName: 'Jhon Doe',
+    companyName: ' Director of Compliance, Altverse Group',
   },
 ]

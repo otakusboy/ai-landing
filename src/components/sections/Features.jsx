@@ -7,12 +7,11 @@ import { valueIntro, valueSections } from '../../data/valueContent'
 import { featureCardActiveTransition, featureCardActiveTransitionReduced } from '@/motion'
 import AppImage from '../ui/AppImage'
 import { cn } from '@/lib/cn'
-import { contentImageTabletMax, focusRing, sectionContentMt, sectionPyLoose, stackGapSection } from '@/lib/sectionStyles'
+import { focusRing, sectionContentMt, sectionPyLoose, stackGapSection } from '@/lib/sectionStyles'
 
 const featureImageClass = cn(
-  'h-[300px] w-full rounded-md',
-  contentImageTabletMax,
-  'lg:h-auto lg:min-h-[500px] lg:max-h-[500px]',
+  'h-[300px] max-h-[300px] w-full rounded-md object-cover object-top',
+  'lg:h-[500px] lg:max-h-[500px]',
 )
 const featureHeadingClass = 'text-2xl font-regular tracking-tight text-gray-900 sm:text-2xl lg:text-3xl'
 const featureCardBase = cn(

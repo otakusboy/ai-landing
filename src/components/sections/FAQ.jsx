@@ -5,7 +5,7 @@ import { faqItems } from '../../data/faq'
 import FeatherIcon from '@/icons/FeatherIcon'
 import { cn } from '@/lib/cn'
 import { getFaqPanelTransition } from '@/motion'
-import { focusRing, headingH2, sectionContentMtXL, sectionPy } from '@/lib/sectionStyles'
+import { focusRing, headingH2, sectionPy } from '@/lib/sectionStyles'
 
 const faqToggleClass = cn(
   'group flex w-full cursor-pointer items-start justify-between gap-4 text-left text-lg font-medium sm:text-lg lg:text-xl',
@@ -75,18 +75,22 @@ export default function FAQ() {
   return (
     <section id="contact" aria-labelledby="faq-heading" className={cn('bg-white', sectionPy)}>
       <Container>
-        <h2 id="faq-heading" className={cn(headingH2, 'text-center')}>
-          Common questions about our core services
-        </h2>
-        <div className={cn('mx-auto max-w-4xl', sectionContentMtXL)}>
-          {faqItems.map((item) => (
-            <FAQItem
-              key={item.id}
-              item={item}
-              open={openId === item.id}
-              onToggle={() => handleToggle(item.id)}
-            />
-          ))}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-10 lg:gap-16">
+          <div className="md:col-span-4">
+            <h2 id="faq-heading" className={headingH2}>
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="md:col-span-8">
+            {faqItems.map((item) => (
+              <FAQItem
+                key={item.id}
+                item={item}
+                open={openId === item.id}
+                onToggle={() => handleToggle(item.id)}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </section>

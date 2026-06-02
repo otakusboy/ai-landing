@@ -25,7 +25,7 @@ export const pricingCardLast =
   'md:col-span-2 md:mr-auto md:w-full md:max-w-[calc((100%-0.5rem)/2)] lg:col-span-1 lg:max-w-none'
 
 export const testimonialImage =
-  'aspect-[3/4] w-full rounded-md object-cover object-top max-md:max-h-[300px] md:mx-auto md:aspect-auto md:h-[450px] md:max-w-[480px] lg:mx-0 lg:h-full lg:min-h-[450px] lg:max-h-[560px] lg:max-w-none'
+  'aspect-[3/4] w-full rounded-md object-cover object-top max-md:max-h-[300px] md:aspect-auto md:h-full md:min-h-[450px] md:max-h-[560px]'
 
 export const headingH2 =
   'text-2xl font-semibold tracking-normal text-gray-900 sm:text-3xl lg:text-4xl'

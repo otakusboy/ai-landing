@@ -1,5 +1,5 @@
 export const socialProofIntro =
-  'Trusted by leading organizations across finance, healthcare, and technology sectors worldwide.'
+  'Trusted by legal and business teams worldwide.'
 
 const PARTNER_LOGOS = [
   { id: 1, image: new URL('../assets/logo/logoipsum-391.svg', import.meta.url).href },

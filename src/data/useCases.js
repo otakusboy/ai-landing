@@ -1,50 +1,50 @@
 export const useCasesContent = {
-  title: 'Solutions for every business challenge',
+  title: 'Solutions for every legal workflow',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'Purpose-built use cases for faster reviews, clearer decisions, and more consistent legal operations.',
 }
 
 export const useCases = [
   {
     id: 'usecase-finance',
-    title: 'Financial Operations',
+    title: ' Contract Review',
     icon: 'feather',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Review agreements faster with AI-assisted analysis, issue spotting, and clearer legal context.',
   },
   {
     id: 'usecase-healthcare',
-    title: 'Healthcare Compliance',
+    title: ' Risk Analysis',
     icon: 'dollar-sign',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Identify risky clauses, missing protections, and language that needs closer legal attention.',
   },
   {
     id: 'usecase-supply',
-    title: 'Supply Chain Management',
+    title: 'Document Summary',
     icon: 'box',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Turn long legal documents into concise summaries your team can understand and act on quickly.',
   },
   {
     id: 'usecase-hr',
-    title: 'Human Resources',
+    title: 'Team Collaboration',
     icon: 'box',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Keep legal and business teams aligned with shared review workflows and organized feedback.',
   },
   {
     id: 'usecase-legal',
-    title: 'Legal and Governance',
+    title: 'Compliance Review',
     icon: 'box',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Check contracts against internal standards and review requirements with greater consistency.',
   },
   {
     id: 'usecase-analytics',
-    title: 'Data and Analytics',
+    title: 'Approval Workflow',
     icon: 'box',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.',
+      'Move contracts through review and approval stages with better structure, visibility, and control.',
   },
 ]

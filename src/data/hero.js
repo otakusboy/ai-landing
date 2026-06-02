@@ -1,7 +1,7 @@
 export const heroContent = {
-  title: 'Better content, anywhere',
+  title: 'Smarter Contract Decisions',
   description:
-    'Pellentesque a scelerisque metus, facilisis mollis odio. Integer dignissim.',
+    'Veridoc combines AI-powered analysis, risk detection, and workflow support to help teams review with speed and precision.',
   actions: [
     { label: 'Learn more', href: '#solutions' },
     { label: 'Pricing', href: '#pricing' },

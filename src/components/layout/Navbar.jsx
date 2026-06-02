@@ -1,6 +1,8 @@
 import Container from './Container'
+import AppImage from '../ui/AppImage'
 import Button from '../ui/Button'
 import { brand, navLinks } from '../../data/navigation'
+import { cn } from '@/lib/cn'
 import useIsPastHero from '../../hooks/useIsPastHero'
 import useMobileMenu from '../../hooks/useMobileMenu'
 import { HEADER_BASE, navbarTheme } from './navbarTheme'
@@ -87,7 +89,7 @@ function MobileMenuContent({ linkClassName, ctaClassName, onNavigate }) {
       <div className="shrink-0 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
         <Button
           as="a"
-          href="#contact"
+          href="#footer"
           useColorStyles={false}
           className={`w-full ${ctaClassName}`}
           onClick={onNavigate}
@@ -122,9 +124,14 @@ export default function Navbar() {
             <div className="flex min-w-0 items-center gap-6 lg:gap-12">
               <a
                 href={brand.href}
-                className={`shrink-0 text-lg font-semibold tracking-tight ${theme.brand[menuVariant]}`}
+                aria-label={brand.name}
+                className={cn('inline-flex shrink-0 items-center', theme.brand[menuVariant])}
               >
-                {brand.name}
+                <AppImage
+                  src={menuVariant === 'top' ? brand.logo.white : brand.logo.black}
+                  alt={brand.name}
+                  className="max-h-6 w-auto"
+                />
               </a>
               <nav aria-label="Main navigation" className="hidden lg:block">
                 <NavLinks
@@ -137,7 +144,7 @@ export default function Navbar() {
               <div className="hidden lg:block">
                 <Button
                   as="a"
-                  href="#contact"
+                  href="#footer"
                   size="sm"
                   useColorStyles={variant === 'scrolled'}
                   className={theme.cta[variant]}

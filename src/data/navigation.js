@@ -1,12 +1,15 @@
 export const navLinks = [
-  { id: 'solutions', label: 'Solutions', href: '#solutions' },
-  { id: 'compliance', label: 'Compliance', href: '#compliance' },
-  { id: 'about', label: 'About', href: '#about' },
+  { id: 'features', label: 'Features', href: '#about' },
+  { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
+  { id: 'use-cases', label: 'Use cases', href: '#solutions' },
   { id: 'pricing', label: 'Pricing', href: '#pricing' },
-  { id: 'contact', label: 'FAQ', href: '#contact' },
 ]
 
 export const brand = {
-  name: 'Lipsum',
-  href: '#',
+  name: 'Meridian Group',
+  href: '#hero',
+  logo: {
+    black: new URL('../assets/logo/Logo-black.svg', import.meta.url).href,
+    white: new URL('../assets/logo/Logo-white.svg', import.meta.url).href,
+  },
 }

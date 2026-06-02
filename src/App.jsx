@@ -1,4 +1,5 @@
 import Footer from './components/layout/Footer'
+import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import SocialProof from './components/sections/SocialProof'
 import Features from './components/sections/Features'
@@ -11,6 +12,7 @@ import FAQ from './components/sections/FAQ'
 export default function App() {
   return (
     <>
+      <Navbar />
       <main>
         <Hero />
         <SocialProof />

@@ -1,30 +1,93 @@
 import Container from './Container'
-import { footerContactLinks, footerMeta } from '../../data/footer'
+import AppImage from '../ui/AppImage'
+import Button from '../ui/Button'
+import { footerCta, footerImage, footerMeta, footerSocialLinks } from '../../data/footer'
 import { navLinks } from '../../data/navigation'
 import { cn } from '@/lib/cn'
-import { containerPy, focusRing } from '@/lib/sectionStyles'
+import { containerPy, focusRing, headingH2, headingH3 } from '@/lib/sectionStyles'
 
-const footerLinkClass = cn('text-sm font-medium text-gray-600 transition-colors hover:text-gray-900', focusRing)
-const footerListClass = 'flex flex-col gap-3'
-const footerAside = 'w-full max-w-[400px] sm:ml-auto md:ml-0 lg:ml-auto'
+const footerLinkClass = cn(
+  'text-sm font-medium text-olive-500 transition-colors hover:text-white!',
+  focusRing,
+)
 
-const footerTopRow =
-  'flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6 md:flex-col md:items-start md:gap-8 lg:flex-row lg:justify-between lg:gap-6'
-
-const footerBottomRow =
-  'mt-10 flex flex-col gap-6 border-t border-gray-200 pt-6 sm:mt-12 sm:gap-8 sm:pt-8 md:mt-10 md:gap-6 md:pt-6 md:items-start lg:flex-row lg:items-start lg:justify-between lg:gap-8'
-
-function FooterLinkList({ links }) {
+function FooterTop() {
   return (
-    <ul className={footerListClass}>
-      {links.map((link) => (
-        <li key={link.id}>
+    <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
+      <div className="max-w-xl">
+        <h2 className={cn(headingH2, 'text-olive-200')}>{footerCta.heading}</h2>
+        <p className="mt-6 text-md text-olive-500">{footerCta.description}</p>
+      </div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-3 md:shrink-0">
+        <Button as="a" href={footerCta.primary.href}>
+          {footerCta.primary.label}
+        </Button>
+        <Button as="a" href={footerCta.secondary.href} variant="secondary">
+          {footerCta.secondary.label}
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+function FooterImage() {
+  return (
+    <div className="mt-10 mb-10 md:mt-12 lg:mt-20 lg:mb-20">
+      <AppImage
+        src={footerImage.src}
+        alt={footerImage.alt}
+        className="h-[250px] w-full rounded-md object-cover lg:h-[300px]"
+      />
+    </div>
+  )
+}
+
+function FooterNav() {
+  return (
+    <nav aria-label="Footer navigation" className="md:flex-1">
+      <ul className="flex flex-wrap items-center justify-start gap-x-6 gap-y-2 md:justify-center md:gap-x-8">
+        {navLinks.map((link) => (
+          <li key={link.id}>
+            <a href={link.href} className={footerLinkClass}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+const socialIconMaskStyle = (icon) => ({
+  WebkitMaskImage: `url("${icon}")`,
+  maskImage: `url("${icon}")`,
+  WebkitMaskRepeat: 'no-repeat',
+  maskRepeat: 'no-repeat',
+  WebkitMaskPosition: 'center',
+  maskPosition: 'center',
+  WebkitMaskSize: 'contain',
+  maskSize: 'contain',
+})
+
+function FooterSocials() {
+  return (
+    <ul className="flex items-center gap-3">
+      {footerSocialLinks.map((social) => (
+        <li key={social.id}>
           <a
-            href={link.href}
-            className={footerLinkClass}
-            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            href={social.href}
+            aria-label={social.label}
+            className={cn(
+              'inline-flex items-center justify-center bg-transparent p-1 text-olive-50 transition-colors hover:text-white!',
+              focusRing,
+            )}
+            {...(social.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            {link.label}
+            <span
+              aria-hidden="true"
+              className="block h-5 w-5 bg-current"
+              style={socialIconMaskStyle(social.icon)}
+            />
           </a>
         </li>
       ))}
@@ -32,43 +95,29 @@ function FooterLinkList({ links }) {
   )
 }
 
-function FooterNav({ label, title, links, itemsPerColumn = 3 }) {
-  const primaryLinks = links.slice(0, itemsPerColumn)
-  const overflowLinks = links.slice(itemsPerColumn)
-
+function FooterBottom() {
   return (
-    <nav aria-label={label} className="min-w-0 flex-1 sm:basis-0">
-      {title ? <p className="mb-3 text-sm font-semibold text-gray-900">{title}</p> : null}
-      {overflowLinks.length > 0 ? (
-        <div className="flex gap-8 sm:gap-12">
-          <FooterLinkList links={primaryLinks} />
-          <FooterLinkList links={overflowLinks} />
-        </div>
-      ) : (
-        <FooterLinkList links={primaryLinks} />
-      )}
-    </nav>
+    <div className="mt-10 flex flex-col gap-6 border-t border-olive-700 pt-8 md:mt-12 md:flex-row md:items-center md:justify-between md:gap-8">
+      <a
+        href="#hero"
+        aria-label={footerMeta.brand}
+        className={cn('inline-flex shrink-0 items-center', focusRing)}
+      >
+        <AppImage src={footerMeta.brandLogo} alt={footerMeta.brand} className="max-h-6 w-auto" />
+      </a>
+      <FooterNav />
+      <FooterSocials />
+    </div>
   )
 }
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-olive-50">
-      <Container className={containerPy}>
-        <div className={footerTopRow}>
-          <a href="#hero" className={cn('shrink-0 text-xl font-semibold text-gray-900', focusRing)}>
-            {footerMeta.brand}
-          </a>
-          <p className={cn('text-left text-xl text-gray-600 md:max-w-md', footerAside)}>{footerMeta.tagline}</p>
-        </div>
-
-        <div className={footerBottomRow}>
-          <div className={cn('order-1 flex flex-col gap-8 sm:flex-row sm:gap-10 md:gap-8', footerAside, 'lg:order-2')}>
-            <FooterNav label="Footer navigation" title={footerMeta.menuTitle} links={navLinks} />
-            <FooterNav label="Contact" title={footerMeta.contactTitle} links={footerContactLinks} />
-          </div>
-          <p className="order-2 text-sm text-gray-500 lg:order-1">{footerMeta.copyright}</p>
-        </div>
+    <footer id="footer" className="bg-olive-900 lg:py-0 min-h-[600px]">
+      <Container className={cn(containerPy, 'pb-10!')}>
+        <FooterTop />
+        <FooterImage />
+        <FooterBottom />
       </Container>
     </footer>
   )

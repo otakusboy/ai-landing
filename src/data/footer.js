@@ -1,13 +1,41 @@
 export const footerMeta = {
   brand: 'Meridian Group',
-  tagline: 'Building lasting partnerships through operational excellence.',
+  brandLogo: new URL('../assets/logo/Logo-white.svg', import.meta.url).href,
   copyright: '© 2026 Meridian Group. All rights reserved.',
-  menuTitle: 'Menu',
-  contactTitle: 'Socials',
 }
 
-export const footerContactLinks = [
-  { id: 'contact-x', label: 'X', href: 'https://x.com', external: true },
-  { id: 'contact-email', label: 'Email', href: 'mailto:hello@meridiangroup.com' },
-  { id: 'contact-linkedin', label: 'LinkedIn', href: 'https://linkedin.com', external: true },
+export const footerCta = {
+  heading: 'Start reviewing smarter today',
+  description: 'Try AI-powered review on your next agreement to surface key terms, flag potential risks, and streamline collaboration between legal and business.',
+  primary: { label: 'Get in touch', href: '#contact' },
+  secondary: { label: 'Learn more', href: '#solutions' },
+}
+
+export const footerImage = {
+  src: 'https://placehold.co/1600x600/d1d5db/6b7280?text=Footer+Image',
+  alt: 'Footer feature image',
+}
+
+export const footerSocialLinks = [
+  {
+    id: 'social-x',
+    label: 'X',
+    href: 'https://x.com',
+    external: true,
+    icon: new URL('../assets/socials/twitter-alt-square.svg', import.meta.url).href,
+  },
+  {
+    id: 'social-linkedin',
+    label: 'LinkedIn',
+    href: 'https://linkedin.com',
+    external: true,
+    icon: new URL('../assets/socials/linkedin.svg', import.meta.url).href,
+  },
+  {
+    id: 'social-github',
+    label: 'GitHub',
+    href: 'https://github.com',
+    external: true,
+    icon: new URL('../assets/socials/github.svg', import.meta.url).href,
+  },
 ]
