@@ -7,9 +7,22 @@ import { cardGrid3, cardPaddingMd, headingH3, bodySm, headingH2Inverse, sectionC
 import { cn } from '@/lib/cn'
 import { FeatherIcon } from '@/icons'
 import ComplianceLogo from '../ui/ComplianceLogo'
-import { getComplianceBadgeMotion, getUseCaseCardMotion } from '@/motion'
+import { getComplianceBadgeMotion, getFadeInMotion, getUseCaseCardMotion, useFadeScrollReveal } from '@/motion'
 
 const DEFAULT_USE_CASE_ICON = 'box'
+
+/** Use cases heading — top-to-bottom fade per line. Lower `duration` = faster. */
+const useCasesHeadingMotion = {
+  title: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
+  description: { duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] },
+}
+
+/** Compliance heading — default opacity fade on scroll. Lower `duration` = faster. */
+const complianceHeadingMotion = {
+  duration: 0.55,
+  delay: 0,
+  ease: [0.22, 1, 0.36, 1],
+}
 
 function UseCaseCard({ title, description, icon = DEFAULT_USE_CASE_ICON, variants }) {
   return (
@@ -36,12 +49,21 @@ export default function UseCases() {
   const reduceMotion = useReducedMotion()
   const { card: useCaseCardVariants, grid: useCaseGridVariants } = getUseCaseCardMotion(reduceMotion)
   const { card: complianceCardVariants, grid: complianceGridVariants } = getComplianceBadgeMotion(reduceMotion)
+  const complianceHeadingVariants = getFadeInMotion(reduceMotion, complianceHeadingMotion)
+  const complianceHeadingReveal = useFadeScrollReveal()
 
   return (
     <section className="bg-olive-800">
       <Container>
         <div id="solutions" aria-labelledby="use-cases-heading" className={sectionPy}>
-          <SectionHeading inverse className="text-center" title={useCasesContent.title} description={useCasesContent.description} titleId="use-cases-heading" />
+          <SectionHeading
+            inverse
+            motion={useCasesHeadingMotion}
+            className="text-center"
+            title={useCasesContent.title}
+            description={useCasesContent.description}
+            titleId="use-cases-heading"
+          />
           <motion.div className={cn(cardGrid3, 'gap-3')} variants={useCaseGridVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.20 }}>
             {useCases.map((useCase) => (
               <UseCaseCard key={useCase.id} title={useCase.title} description={useCase.description} icon={useCase.icon} variants={useCaseCardVariants} />
@@ -50,9 +72,16 @@ export default function UseCases() {
         </div>
 
         <div id="compliance" aria-labelledby="compliance-heading" className={cn(sectionPy, 'lg:min-h-[600px]')}>
-          <h3 id="compliance-heading" className={cn(headingH2Inverse, 'text-center')}>
+          <motion.h3
+            ref={complianceHeadingReveal.ref}
+            id="compliance-heading"
+            animate={complianceHeadingReveal.animate}
+            variants={complianceHeadingVariants}
+            initial="hidden"
+            className={cn(headingH2Inverse, 'text-center')}
+          >
             {complianceContent.title}
-          </h3>
+          </motion.h3>
           <motion.ul
             className={cn(sectionContentMt, 'grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:gap-6 lg:gap-10')}
             aria-label="Security and compliance certifications"

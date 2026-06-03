@@ -1,12 +1,19 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { animate, motion, useMotionValue, useReducedMotion } from 'motion/react'
 import AppImage from '../ui/AppImage'
+import { getFadeInRightMotion } from '@/motion'
 import { cn } from '@/lib/cn'
 
 const VELOCITY = 40
 const HOVER_VELOCITY = 20
 const SET_GAP = 40
 const MASK_CLASS = cn('w-full touch-pan-y overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]')
+
+/** Ticker entrance — right-to-left fade on scroll. */
+const tickerMotion = {
+  duration: 0.55,
+  delay: 0,
+}
 
 function getTickerMetrics(container, track) {
   const first = track.children[0]
@@ -48,6 +55,7 @@ export default function PartnerLogoTicker({ logos }) {
   const [metrics, setMetrics] = useState(null)
   const [isHovered, setIsHovered] = useState(false)
   const reducedMotion = useReducedMotion()
+  const trackEntranceMotion = getFadeInRightMotion(reducedMotion, tickerMotion)
   const velocity = isHovered ? HOVER_VELOCITY : VELOCITY
 
   useLayoutEffect(() => {
@@ -80,10 +88,19 @@ export default function PartnerLogoTicker({ logos }) {
 
   return (
     <motion.div ref={containerRef} className={MASK_CLASS} aria-label="Partner companies" onHoverStart={() => setIsHovered(true)} onHoverEnd={() => setIsHovered(false)} onTouchStart={() => setIsHovered(true)} onTouchEnd={() => setIsHovered(false)} onTouchCancel={() => setIsHovered(false)}>
-      <motion.div ref={trackRef} style={{ x }} className="flex w-max items-center gap-10">
-        {Array.from({ length: metrics?.repeatCount ?? 2 }, (_, setIndex) => (
-          <LogoSet key={setIndex} logos={tickerLogos(logos, setIndex)} hidden={setIndex > 0} />
-        ))}
+      <motion.div style={{ x }}>
+        <motion.div
+          ref={trackRef}
+          className="flex w-max items-center gap-10"
+          variants={trackEntranceMotion}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {Array.from({ length: metrics?.repeatCount ?? 2 }, (_, setIndex) => (
+            <LogoSet key={setIndex} logos={tickerLogos(logos, setIndex)} hidden={setIndex > 0} />
+          ))}
+        </motion.div>
       </motion.div>
     </motion.div>
   )

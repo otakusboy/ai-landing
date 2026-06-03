@@ -4,7 +4,13 @@ import { FeatherIcon } from '@/icons'
 import Container from '../layout/Container'
 import SectionHeading from '../ui/SectionHeading'
 import { valueIntro, valueSections } from '../../data/valueContent'
-import { featureCardActiveTransition, featureCardActiveTransitionReduced } from '@/motion'
+import {
+  featureCardActiveTransition,
+  featureCardActiveTransitionReduced,
+  getFadeInDownMotion,
+  getFadeInScrollMotion,
+  useFadeScrollReveal,
+} from '@/motion'
 import AppImage from '../ui/AppImage'
 import { cn } from '@/lib/cn'
 import { focusRing, sectionContentMt, sectionPyLoose, stackGapSection } from '@/lib/sectionStyles'
@@ -22,10 +28,39 @@ const featureSectionGridClass = cn(
   'grid min-h-0 grid-cols-1 items-stretch gap-6 md:gap-6 lg:min-h-[500px] lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-10',
 )
 
+/** Features heading entrance — top-to-bottom fade per line. Lower `duration` = faster. */
+const featuresHeadingMotion = {
+  eyebrow: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
+  title: { duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] },
+  description: { duration: 0.55, delay: 0.24, ease: [0.22, 1, 0.36, 1] },
+}
+
+/** Feature card entrance — opacity fade with stagger. Lower `duration` = faster. */
+const featureCardMotion = {
+  duration: 0.55,
+  delay: 0,
+  staggerChildren: 0.08,
+  delayChildren: 0.1,
+  ease: [0.22, 1, 0.36, 1],
+}
+
+/** Feature section title — top-to-bottom fade. Lower `duration` = faster. */
+const featureSectionHeadingMotion = {
+  duration: 0.55,
+  delay: 0,
+  ease: [0.22, 1, 0.36, 1],
+}
+
 function FeaturesHeading() {
   return (
     <div className="mx-auto text-center">
-      <SectionHeading eyebrow={valueIntro.eyebrow} title={valueIntro.title} description={valueIntro.description} titleId="features-heading" />
+      <SectionHeading
+        motion={featuresHeadingMotion}
+        eyebrow={valueIntro.eyebrow}
+        title={valueIntro.title}
+        description={valueIntro.description}
+        titleId="features-heading"
+      />
     </div>
   )
 }
@@ -35,14 +70,29 @@ function FeatureImage({ item }) {
 }
 
 function FeatureHeading({ id, title, className }) {
-  return <h3 id={id} className={cn(featureHeadingClass, className)}>{title}</h3>
+  const reduceMotion = useReducedMotion()
+  const variants = getFadeInDownMotion(reduceMotion, featureSectionHeadingMotion)
+  const { ref, animate } = useFadeScrollReveal()
+
+  return (
+    <motion.h3
+      ref={ref}
+      id={id}
+      animate={animate}
+      variants={variants}
+      initial="hidden"
+      className={cn(featureHeadingClass, className)}
+    >
+      {title}
+    </motion.h3>
+  )
 }
 
-function FeatureCard({ headline, description, active, onSelect, activeLayoutId }) {
+function FeatureCard({ headline, description, active, onSelect, activeLayoutId, variants }) {
   const reduceMotion = useReducedMotion()
   const activeTransition = reduceMotion ? featureCardActiveTransitionReduced : featureCardActiveTransition
   return (
-    <motion.button type="button" onClick={onSelect} layout className={cn(featureCardBase, !active && 'hover:bg-white/60')}>
+    <motion.button type="button" onClick={onSelect} layout variants={variants} className={cn(featureCardBase, !active && 'hover:bg-white/60')}>
       {active ? <motion.div layoutId={activeLayoutId} className="absolute inset-0 rounded-md bg-white shadow-lg" transition={activeTransition} /> : null}
       <div className="relative z-10">
         <div className="flex flex-col items-start gap-3 lg:flex-row lg:items-center">
@@ -56,13 +106,31 @@ function FeatureCard({ headline, description, active, onSelect, activeLayoutId }
 }
 
 function FeatureContent({ items, activeItemId, onSelectItem, sectionId }) {
+  const reduceMotion = useReducedMotion()
+  const { item: cardVariants, container: gridVariants } = getFadeInScrollMotion(reduceMotion, featureCardMotion)
+  const { ref, animate } = useFadeScrollReveal()
   const activeLayoutId = `feature-card-active-${sectionId}`
+
   return (
-    <div className="flex flex-col gap-1 rounded-lg bg-[#EBEBE5] p-1">
+    <motion.div
+      ref={ref}
+      animate={animate}
+      variants={gridVariants}
+      initial="hidden"
+      className="flex flex-col gap-1 rounded-lg bg-[#EBEBE5] p-1"
+    >
       {items.map((item) => (
-        <FeatureCard key={item.id} headline={item.headline} description={item.description} active={activeItemId === item.id} onSelect={() => onSelectItem(item.id)} activeLayoutId={activeLayoutId} />
+        <FeatureCard
+          key={item.id}
+          variants={cardVariants}
+          headline={item.headline}
+          description={item.description}
+          active={activeItemId === item.id}
+          onSelect={() => onSelectItem(item.id)}
+          activeLayoutId={activeLayoutId}
+        />
       ))}
-    </div>
+    </motion.div>
   )
 }
 

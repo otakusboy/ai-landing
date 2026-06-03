@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import Container from '../layout/Container'
 import AppImage from '../ui/AppImage'
 import ImagePlaceholder from '../ui/ImagePlaceholder'
-import { getTestimonialProgressTransition, testimonialSlideTransition } from '@/motion'
+import { FadeIn, getFadeInDownScrollMotion, getTestimonialProgressTransition, testimonialSlideTransition, useFadeScrollReveal } from '@/motion'
 import { testimonials } from '../../data/testimonial'
 import { cn } from '@/lib/cn'
 import { focusRing, gridGapLg, sectionPy, testimonialImage } from '@/lib/sectionStyles'
@@ -15,6 +15,29 @@ const testimonialLayout = cn(
 )
 const testimonialImageCol = 'w-full md:w-5/12 md:max-w-[480px] md:shrink-0'
 const testimonialContentCol = 'flex min-w-0 flex-1 flex-col gap-6 md:justify-between md:gap-7'
+
+/** Testimonial portrait — default opacity fade on scroll. Lower `duration` = faster. */
+const testimonialImageMotion = {
+  duration: 0.55,
+  delay: 0,
+  ease: [0.22, 1, 0.36, 1],
+}
+
+/** Testimonial content — top-to-bottom fade with stagger. Lower `duration` = faster. */
+const testimonialSlideMotion = {
+  duration: 0.55,
+  delay: 0,
+  staggerChildren: 0.12,
+  delayChildren: 0.1,
+  ease: [0.22, 1, 0.36, 1],
+}
+
+/** Testimonial progress tabs — default opacity fade on scroll. Lower `duration` = faster. */
+const testimonialProgressMotion = {
+  duration: 0.55,
+  delay: 0,
+  ease: [0.22, 1, 0.36, 1],
+}
 
 const tabButtonClass = cn('flex-1 cursor-pointer rounded-full py-2.5 sm:py-3', focusRing)
 const progressFillClass = 'pointer-events-none absolute inset-0 rounded-full bg-olive-500'
@@ -32,7 +55,7 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
   const progressTransition = getTestimonialProgressTransition(reduceMotion)
   const activeIndex = items.findIndex((item) => item.id === activeId)
   return (
-    <div className="flex gap-2" role="tablist" aria-label="Testimonial slides">
+    <FadeIn className="flex gap-2" role="tablist" aria-label="Testimonial slides" {...testimonialProgressMotion}>
       {items.map((item, index) => {
         const isActive = item.id === activeId
         return (
@@ -46,28 +69,42 @@ function TestimonialProgress({ items, activeId, progressKey, onSelect, onComplet
           </motion.button>
         )
       })}
-    </div>
+    </FadeIn>
   )
 }
 
 function TestimonialSlide({ item }) {
+  const reduceMotion = useReducedMotion()
+  const { item: partVariants, container: slideVariants } = getFadeInDownScrollMotion(reduceMotion, testimonialSlideMotion)
+  const { ref, animate } = useFadeScrollReveal()
+
   return (
-    <blockquote id={`testimonial-panel-${item.id}`} aria-labelledby={`testimonial-tab-${item.id}`} className="flex flex-col gap-6">
-      <div className="group flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
+    <motion.blockquote
+      ref={ref}
+      animate={animate}
+      variants={slideVariants}
+      initial="hidden"
+      id={`testimonial-panel-${item.id}`}
+      aria-labelledby={`testimonial-tab-${item.id}`}
+      className="flex flex-col gap-6"
+    >
+      <motion.div variants={partVariants} className="group flex h-10 cursor-pointer items-center" role="img" aria-label={`${item.companyLogoLabel} logo`}>
         <AppImage
           src={item.companyLogo}
           alt=""
           className="h-6 w-auto max-w-none object-contain object-left grayscale transition-[filter] duration-300 group-hover:grayscale-0"
         />
-      </div>
-      <h2 id="testimonial-heading" className="font-display-alternative text-lg font-medium tracking-normal text-gray-800 sm:text-xl lg:text-3xl">&ldquo;{item.quote}&rdquo;</h2>
-      <footer>
+      </motion.div>
+      <motion.h2 id="testimonial-heading" variants={partVariants} className="font-display-alternative text-lg font-medium tracking-normal text-gray-800 sm:text-xl lg:text-3xl">
+        &ldquo;{item.quote}&rdquo;
+      </motion.h2>
+      <motion.footer variants={partVariants}>
         <cite className="not-italic">
           <span className="block text-base font-medium text-gray-900">{item.clientName}</span>
           <span className="mt-2 block text-sm text-gray-600">{item.companyName}</span>
         </cite>
-      </footer>
-    </blockquote>
+      </motion.footer>
+    </motion.blockquote>
   )
 }
 
@@ -90,12 +127,14 @@ export default function Testimonial() {
           <div className={testimonialImageCol}>
             <AnimatePresence mode="wait">
               <Slide id={active.id}>
-                <ImagePlaceholder
-                  capTabletHeight={false}
-                  src={active.image}
-                  label={active.imageLabel}
-                  className={testimonialImage}
-                />
+                <FadeIn className="h-full" {...testimonialImageMotion}>
+                  <ImagePlaceholder
+                    capTabletHeight={false}
+                    src={active.image}
+                    label={active.imageLabel}
+                    className={testimonialImage}
+                  />
+                </FadeIn>
               </Slide>
             </AnimatePresence>
           </div>

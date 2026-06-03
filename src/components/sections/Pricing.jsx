@@ -1,10 +1,26 @@
+import { motion, useReducedMotion } from 'motion/react'
 import Container from '../layout/Container'
 import Button from '../ui/Button'
 import SectionHeading from '../ui/SectionHeading'
 import { FeatherIcon } from '@/icons'
 import { pricingContent, pricingPlans } from '../../data/pricing'
+import { getFadeInScrollMotion, useFadeScrollReveal } from '@/motion'
 import { cn } from '@/lib/cn'
 import { cardSurface, pricingCardLast, pricingGrid, sectionPy } from '@/lib/sectionStyles'
+
+/** Pricing heading — top-to-bottom fade. Lower `duration` = faster. */
+const pricingHeadingMotion = {
+  title: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
+}
+
+/** Pricing cards — default opacity fade with stagger. Lower `duration` = faster. */
+const pricingCardMotion = {
+  duration: 0.55,
+  delay: 0,
+  staggerChildren: 0.12,
+  delayChildren: 0.1,
+  ease: [0.22, 1, 0.36, 1],
+}
 
 const pricingCardBase = cn(cardSurface, 'flex h-full flex-col p-6 sm:p-8 lg:p-10')
 const pricingDisplayFont = 'font-display-alternative'
@@ -46,9 +62,9 @@ function PricingFeatures({ groups }) {
   )
 }
 
-function PricingCard({ plan, className }) {
+function PricingCard({ plan, className, variants }) {
   return (
-    <article className={cn(pricingCardBase, plan.highlighted ? 'border-olive-700 ring-1 rounded-xs' : 'rounded-xs', className)}>
+    <motion.article variants={variants} className={cn(pricingCardBase, plan.highlighted ? 'border-olive-700 ring-1 rounded-xs' : 'rounded-xs', className)}>
       <div className="flex items-start justify-between gap-3">
         <p className={cn(pricingDisplayFont, 'text-xl font-normal text-olive-900')}>{plan.name}</p>
         {plan.highlighted ? (
@@ -75,26 +91,42 @@ function PricingCard({ plan, className }) {
       >
         {plan.cta}
       </Button>
-    </article>
+    </motion.article>
   )
 }
 
 export default function Pricing() {
+  const reduceMotion = useReducedMotion()
+  const { item: cardVariants, container: cardGridVariants } = getFadeInScrollMotion(reduceMotion, pricingCardMotion)
+  const cardsReveal = useFadeScrollReveal()
   const lastPlanIndex = pricingPlans.length - 1
 
   return (
     <section id="pricing" aria-labelledby="pricing-heading" className={cn('bg-white', sectionPy)}>
       <Container>
-        <SectionHeading className="text-center" title={pricingContent.title} description={pricingContent.description} titleId="pricing-heading" />
-        <div className={pricingGrid}>
+        <SectionHeading
+          motion={pricingHeadingMotion}
+          className="text-center"
+          title={pricingContent.title}
+          description={pricingContent.description}
+          titleId="pricing-heading"
+        />
+        <motion.div
+          ref={cardsReveal.ref}
+          animate={cardsReveal.animate}
+          variants={cardGridVariants}
+          initial="hidden"
+          className={pricingGrid}
+        >
           {pricingPlans.map((plan, index) => (
             <PricingCard
               key={plan.id}
+              variants={cardVariants}
               plan={plan}
               className={index === lastPlanIndex ? pricingCardLast : undefined}
             />
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   )

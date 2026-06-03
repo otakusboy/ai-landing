@@ -1,5 +1,40 @@
+import { motion, useReducedMotion } from 'motion/react'
+import { getFadeInDownMotion } from '@/motion'
 import { cn } from '@/lib/cn'
 import { bodyMd, bodyMdInverse, headingH2, headingH2Inverse } from '@/lib/sectionStyles'
+
+function AnimatedText({
+  as: Tag,
+  motionOptions,
+  reduceMotion,
+  className,
+  children,
+  ...rest
+}) {
+  if (!motionOptions) {
+    return (
+      <Tag className={className} {...rest}>
+        {children}
+      </Tag>
+    )
+  }
+
+  const Component = motion.create(Tag)
+  const variants = getFadeInDownMotion(reduceMotion, motionOptions)
+
+  return (
+    <Component
+      className={className}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      {...rest}
+    >
+      {children}
+    </Component>
+  )
+}
 
 export default function SectionHeading({
   eyebrow,
@@ -11,7 +46,9 @@ export default function SectionHeading({
   className = '',
   titleClassName = '',
   descriptionClassName = '',
+  motion: motionConfig,
 }) {
+  const reduceMotion = useReducedMotion()
   const titleStyles = inverse ? headingH2Inverse : headingH2
   const descriptionStyles = inverse ? bodyMdInverse : bodyMd
   const eyebrowStyles = inverse
@@ -20,16 +57,31 @@ export default function SectionHeading({
 
   return (
     <div className={className}>
-      {eyebrow ? <p className={eyebrowStyles}>{eyebrow}</p> : null}
+      {eyebrow ? (
+        <AnimatedText as="p" motionOptions={motionConfig?.eyebrow} reduceMotion={reduceMotion} className={eyebrowStyles}>
+          {eyebrow}
+        </AnimatedText>
+      ) : null}
       {title ? (
-        <TitleTag id={titleId} className={cn(titleStyles, 'mt-3', titleClassName)}>
+        <AnimatedText
+          as={TitleTag}
+          motionOptions={motionConfig?.title}
+          reduceMotion={reduceMotion}
+          id={titleId}
+          className={cn(titleStyles, 'mt-3', titleClassName)}
+        >
           {title}
-        </TitleTag>
+        </AnimatedText>
       ) : null}
       {description ? (
-        <p className={cn(descriptionStyles, 'mx-auto mt-4 max-w-3xl', descriptionClassName)}>
+        <AnimatedText
+          as="p"
+          motionOptions={motionConfig?.description}
+          reduceMotion={reduceMotion}
+          className={cn(descriptionStyles, 'mx-auto mt-4 max-w-3xl', descriptionClassName)}
+        >
           {description}
-        </p>
+        </AnimatedText>
       ) : null}
     </div>
   )
