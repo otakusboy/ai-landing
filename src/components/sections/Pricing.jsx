@@ -4,22 +4,30 @@ import Button from '../ui/Button'
 import SectionHeading from '../ui/SectionHeading'
 import { FeatherIcon } from '@/icons'
 import { pricingContent, pricingPlans } from '../../data/pricing'
-import { getFadeInScrollMotion, useFadeScrollReveal } from '@/motion'
+import { getFadeInDownMotion, getFadeInGrid, getFadeInScrollMotion, useFadeScrollReveal } from '@/motion'
 import { cn } from '@/lib/cn'
 import { cardSurface, pricingCardLast, pricingGrid, sectionPy } from '@/lib/sectionStyles'
 
 /** Pricing heading — top-to-bottom fade. Lower `duration` = faster. */
 const pricingHeadingMotion = {
-  title: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
+  duration: 1,
+  delay: 0.20,
+  ease: [0.22, 1, 0.36, 1],
 }
 
 /** Pricing cards — default opacity fade with stagger. Lower `duration` = faster. */
 const pricingCardMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 1,
+  delay: 0.20,
   staggerChildren: 0.12,
   delayChildren: 0.1,
   ease: [0.22, 1, 0.36, 1],
+}
+
+/** Section-level stagger — heading first, then card grid. */
+const pricingSectionStagger = {
+  staggerChildren: 0.12,
+  delayChildren: 0,
 }
 
 const pricingCardBase = cn(cardSurface, 'flex h-full flex-col p-6 sm:p-8 lg:p-10')
@@ -97,35 +105,39 @@ function PricingCard({ plan, className, variants }) {
 
 export default function Pricing() {
   const reduceMotion = useReducedMotion()
+  const sectionReveal = useFadeScrollReveal({ once: true })
+  const headingVariants = getFadeInDownMotion(reduceMotion, pricingHeadingMotion)
+  const sectionContainerVariants = getFadeInGrid(pricingSectionStagger)
   const { item: cardVariants, container: cardGridVariants } = getFadeInScrollMotion(reduceMotion, pricingCardMotion)
-  const cardsReveal = useFadeScrollReveal()
   const lastPlanIndex = pricingPlans.length - 1
 
   return (
     <section id="pricing" aria-labelledby="pricing-heading" className={cn('bg-white', sectionPy)}>
       <Container>
-        <SectionHeading
-          motion={pricingHeadingMotion}
-          className="text-center"
-          title={pricingContent.title}
-          description={pricingContent.description}
-          titleId="pricing-heading"
-        />
         <motion.div
-          ref={cardsReveal.ref}
-          animate={cardsReveal.animate}
-          variants={cardGridVariants}
+          ref={sectionReveal.ref}
+          animate={sectionReveal.animate}
+          variants={sectionContainerVariants}
           initial="hidden"
-          className={pricingGrid}
         >
-          {pricingPlans.map((plan, index) => (
-            <PricingCard
-              key={plan.id}
-              variants={cardVariants}
-              plan={plan}
-              className={index === lastPlanIndex ? pricingCardLast : undefined}
+          <motion.div variants={headingVariants}>
+            <SectionHeading
+              className="text-center"
+              title={pricingContent.title}
+              description={pricingContent.description}
+              titleId="pricing-heading"
             />
-          ))}
+          </motion.div>
+          <motion.div variants={cardGridVariants} className={pricingGrid}>
+            {pricingPlans.map((plan, index) => (
+              <PricingCard
+                key={plan.id}
+                variants={cardVariants}
+                plan={plan}
+                className={index === lastPlanIndex ? pricingCardLast : undefined}
+              />
+            ))}
+          </motion.div>
         </motion.div>
       </Container>
     </section>

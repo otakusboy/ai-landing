@@ -7,15 +7,15 @@ import { bodyMd, containerGrid12, gridGapLg, headingH2, sectionContentMt, sectio
 
 /** Statistics intro — right-to-left fade. Lower `duration` = faster. */
 const statisticsIntroMotion = {
-  heading: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
-  description: { duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] },
+  heading: { duration: 0.55, delay: 0.20, ease: [0.22, 1, 0.36, 1] },
+  description: { duration: 0.55, delay: 0.30, ease: [0.22, 1, 0.36, 1] },
 }
 
 /** Stat cards — top-to-bottom fade with stagger. Lower `duration` = faster. */
 const statisticsCardMotion = {
-  duration: 0.55,
-  delay: 0,
-  staggerChildren: 0.12,
+  duration: 0.8,
+  delay: 0.20,
+  staggerChildren: 0.20,
   delayChildren: 0.1,
   ease: [0.22, 1, 0.36, 1],
 }

@@ -2,7 +2,7 @@ export const valueIntro = {
   eyebrow: 'Our Features',
   title: 'Designed for modern legal teams',
   description:
-    'Veridoc brings together AI-powered contract review, secure workflows, and clear legal insight to help legal and business teams review faster, spot risks earlier, and move forward with greater confidence.',
+    'Veridoc brings together AI-powered contract review, secure workflows, and clear legal insight to help legal and business teams review faster.',
 }
 
 const featureImages = {

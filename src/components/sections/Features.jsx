@@ -31,14 +31,14 @@ const featureSectionGridClass = cn(
 /** Features heading entrance — top-to-bottom fade per line. Lower `duration` = faster. */
 const featuresHeadingMotion = {
   eyebrow: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
-  title: { duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] },
+  title: { duration: 0.55, delay: 0.20, ease: [0.22, 1, 0.36, 1] },
   description: { duration: 0.55, delay: 0.24, ease: [0.22, 1, 0.36, 1] },
 }
 
 /** Feature card entrance — opacity fade with stagger. Lower `duration` = faster. */
 const featureCardMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 0.8,
+  delay: 0.15,
   staggerChildren: 0.08,
   delayChildren: 0.1,
   ease: [0.22, 1, 0.36, 1],
@@ -46,8 +46,8 @@ const featureCardMotion = {
 
 /** Feature section title — top-to-bottom fade. Lower `duration` = faster. */
 const featureSectionHeadingMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 1,
+  delay: 0.20,
   ease: [0.22, 1, 0.36, 1],
 }
 

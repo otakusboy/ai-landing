@@ -12,7 +12,7 @@ const instantFadeTransition = { duration: 0, delay: 0 }
  * - false: play once per page view (stays visible after first reveal)
  * - true: replay whenever section re-enters viewport (resets when scrolled away)
  */
-export const fadeScrollReplayable = true
+export const fadeScrollReplayable = false
 
 /** How much of the element must be visible before the fade starts (0–1). */
 export const fadeScrollViewportAmount = 0.2

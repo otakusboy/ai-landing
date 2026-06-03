@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { getFadeInDownMotion } from '@/motion'
+import { getFadeInDownMotion, getFadeScrollViewport, useFadeScrollReveal } from '@/motion'
 import { cn } from '@/lib/cn'
 import { bodyMd, bodyMdInverse, headingH2, headingH2Inverse } from '@/lib/sectionStyles'
 
@@ -9,6 +9,8 @@ function AnimatedText({
   reduceMotion,
   className,
   children,
+  once,
+  amount,
   ...rest
 }) {
   if (!motionOptions) {
@@ -21,14 +23,16 @@ function AnimatedText({
 
   const Component = motion.create(Tag)
   const variants = getFadeInDownMotion(reduceMotion, motionOptions)
+  const { once: shouldAnimateOnce, amount: viewportAmount } = getFadeScrollViewport({ once, amount })
+  const { ref, animate } = useFadeScrollReveal({ once: shouldAnimateOnce, amount: viewportAmount })
 
   return (
     <Component
+      ref={ref}
       className={className}
       variants={variants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      animate={animate}
       {...rest}
     >
       {children}

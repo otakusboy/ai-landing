@@ -1,11 +1,20 @@
+import { motion, useReducedMotion } from 'motion/react'
 import Container from './Container'
 import AppImage from '../ui/AppImage'
 import Button from '../ui/Button'
 import { brand, navLinks } from '../../data/navigation'
+import { getFadeInDownMotion } from '@/motion'
 import { cn } from '@/lib/cn'
 import useIsPastHero from '../../hooks/useIsPastHero'
 import useMobileMenu from '../../hooks/useMobileMenu'
 import { HEADER_BASE, navbarTheme } from './navbarTheme'
+
+/** Navbar entrance — top-to-bottom fade on load (plays once). Lower `duration` = faster. */
+const navbarMotion = {
+  duration: 1,
+  delay: 0,
+  ease: [0.22, 1, 0.36, 1],
+}
 
 function FeatherMenuIcon({ className = 'h-6 w-6' }) {
   return (
@@ -104,6 +113,8 @@ function MobileMenuContent({ linkClassName, ctaClassName, onNavigate }) {
 export default function Navbar() {
   const isPastHero = useIsPastHero()
   const { isOpen, close, toggle } = useMobileMenu()
+  const reduceMotion = useReducedMotion()
+  const navVariants = getFadeInDownMotion(reduceMotion, navbarMotion)
   const variant = isPastHero ? 'scrolled' : 'top'
   const theme = navbarTheme
   const menuVariant = isOpen ? 'top' : variant
@@ -114,9 +125,12 @@ export default function Navbar() {
   const barRowClass = isOpen ? 'shrink-0 border-b border-white/10 py-3' : ''
 
   return (
-    <header
+    <motion.header
       data-nav-variant={isOpen ? 'top' : variant}
       className={`${HEADER_BASE} ${isOpen ? openHeaderClass : theme.header[variant]}`}
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
     >
       <div className={barRowClass}>
         <Container className="relative z-[60]">
@@ -182,6 +196,6 @@ export default function Navbar() {
           </Container>
         </nav>
       ) : null}
-    </header>
+    </motion.header>
   )
 }

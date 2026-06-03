@@ -16,17 +16,11 @@ const testimonialLayout = cn(
 const testimonialImageCol = 'w-full md:w-5/12 md:max-w-[480px] md:shrink-0'
 const testimonialContentCol = 'flex min-w-0 flex-1 flex-col gap-6 md:justify-between md:gap-7'
 
-/** Testimonial portrait — default opacity fade on scroll. Lower `duration` = faster. */
-const testimonialImageMotion = {
-  duration: 0.55,
-  delay: 0,
-  ease: [0.22, 1, 0.36, 1],
-}
 
 /** Testimonial content — top-to-bottom fade with stagger. Lower `duration` = faster. */
 const testimonialSlideMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 1,
+  delay: 0.20,
   staggerChildren: 0.12,
   delayChildren: 0.1,
   ease: [0.22, 1, 0.36, 1],
@@ -34,7 +28,7 @@ const testimonialSlideMotion = {
 
 /** Testimonial progress tabs — default opacity fade on scroll. Lower `duration` = faster. */
 const testimonialProgressMotion = {
-  duration: 0.55,
+  duration: 1,
   delay: 0,
   ease: [0.22, 1, 0.36, 1],
 }
@@ -127,14 +121,12 @@ export default function Testimonial() {
           <div className={testimonialImageCol}>
             <AnimatePresence mode="wait">
               <Slide id={active.id}>
-                <FadeIn className="h-full" {...testimonialImageMotion}>
                   <ImagePlaceholder
                     capTabletHeight={false}
                     src={active.image}
                     label={active.imageLabel}
                     className={testimonialImage}
                   />
-                </FadeIn>
               </Slide>
             </AnimatePresence>
           </div>

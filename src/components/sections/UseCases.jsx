@@ -13,15 +13,12 @@ const DEFAULT_USE_CASE_ICON = 'box'
 
 /** Use cases heading — top-to-bottom fade per line. Lower `duration` = faster. */
 const useCasesHeadingMotion = {
-  title: { duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] },
-  description: { duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] },
+  title: { duration: 1, delay: 0.20, ease: [0.22, 1, 0.36, 1] },
+  description: { duration: 0.8, delay: 0.24, ease: [0.22, 1, 0.36, 1] },
 }
 
 /** Compliance heading — default opacity fade on scroll. Lower `duration` = faster. */
-const complianceHeadingMotion = {
-  duration: 0.55,
-  delay: 0,
-  ease: [0.22, 1, 0.36, 1],
+const complianceHeadingMotion = { duration: 1, delay: 0.20, ease: [0.22, 1, 0.36, 1]
 }
 
 function UseCaseCard({ title, description, icon = DEFAULT_USE_CASE_ICON, variants }) {

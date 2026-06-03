@@ -9,15 +9,15 @@ import { focusRing, headingH2, sectionPy } from '@/lib/sectionStyles'
 
 /** FAQ heading — default opacity fade on scroll. Lower `duration` = faster. */
 const faqHeadingMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 1,
+  delay: 0.20,
   ease: [0.22, 1, 0.36, 1],
 }
 
 /** FAQ items — bottom-to-top fade with stagger. Lower `duration` = faster. */
 const faqItemMotion = {
-  duration: 0.55,
-  delay: 0,
+  duration: 0.80,
+  delay: 0.30,
   staggerChildren: 0.12,
   delayChildren: 0.1,
   ease: [0.22, 1, 0.36, 1],
