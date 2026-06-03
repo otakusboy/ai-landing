@@ -1,4 +1,4 @@
-# ai-landing
+# Veridoc AI
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c332a0b5-9b9b-4a9d-9dfe-cd2e6aa5dc16/deploy-status)](https://app.netlify.com/projects/landing-ai-iqbalaqaba/deploys)
 [![Cursor](https://img.shields.io/badge/Cursor-000000?logo=cursor)](#)
@@ -14,9 +14,11 @@
 
 ## Overview
 
-This project is a modular single-page marketing site with a sticky, theme-aware navbar, full-viewport hero, and fourteen content sections driven by local data files. Layout follows a disciplined 12-column system, `max-w-[1280px]` containers, and Tailwind default tokens for color, spacing, and typography.
+VeriDoc AI Legal is a mock legal-tech landing page built as my first hands-on coding project with Cursor. VeriDoc combines AI-powered document analysis, risk detection, and workflow support to help legal teams review contracts and documents with greater speed and precision.
 
-**Design direction:** calm, premium, corporate, minimal — no gradients, decorative blobs, or SaaS clichés.
+The project is built with React, Vite, and Tailwind CSS, serving as a practical demonstration of my ability to develop modern, responsive web applications using AI-assisted development tools. It also explores animation and interaction design through the Motion.dev plugin to create a polished user experience.
+
+Beyond the UI, this project focuses on implementing responsive layouts across desktop, tablet, and mobile devices, as well as testing, bug detection, and bug fixing throughout the development process. The codebase is structured to be maintainable, scalable, and easy to extend as new sections and features are added.
 
 ---
 
