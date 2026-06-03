@@ -6,6 +6,8 @@ import { heroContent } from '../../data/hero'
 import { getFadeInUpMotion } from '@/motion'
 import { cn } from '@/lib/cn'
 
+const heroImage = new URL('../../assets/hero.png', import.meta.url).href
+
 /** Per-element hero entrance timing — title, subheading, then buttons. */
 const heroMotion = {
   title: { duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] },
@@ -31,7 +33,7 @@ export default function Hero() {
   return (
     <section id="hero" aria-labelledby="hero-heading" className={heroSectionClass}>
       <AppImage
-        src={heroContent.backgroundImage}
+        src={heroImage}
         alt={heroContent.imageLabel}
         loading="eager"
         fetchPriority="high"

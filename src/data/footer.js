@@ -12,7 +12,7 @@ export const footerCta = {
 }
 
 export const footerImage = {
-  src: 'https://placehold.co/1600x600/d1d5db/6b7280?text=Footer+Image',
+  src: new URL('../assets/footer-img.png', import.meta.url).href,
   alt: 'Footer feature image',
 }
 

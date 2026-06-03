@@ -88,7 +88,7 @@ function FeatureHeading({ id, title, className }) {
   )
 }
 
-function FeatureCard({ headline, description, active, onSelect, activeLayoutId, variants }) {
+function FeatureCard({ icon = 'layers', headline, description, active, onSelect, activeLayoutId, variants }) {
   const reduceMotion = useReducedMotion()
   const activeTransition = reduceMotion ? featureCardActiveTransitionReduced : featureCardActiveTransition
   return (
@@ -96,7 +96,7 @@ function FeatureCard({ headline, description, active, onSelect, activeLayoutId, 
       {active ? <motion.div layoutId={activeLayoutId} className="absolute inset-0 rounded-md bg-white shadow-lg" transition={activeTransition} /> : null}
       <div className="relative z-10">
         <div className="flex flex-col items-start gap-3 lg:flex-row lg:items-center">
-          <FeatherIcon name="layers" size={20} className="text-gray-900" />
+          <FeatherIcon name={icon} size={20} className="text-gray-900" />
           <h4 className="text-lg font-medium text-gray-900">{headline}</h4>
         </div>
         <p className="mt-2 text-base text-gray-600">{description}</p>
@@ -123,6 +123,7 @@ function FeatureContent({ items, activeItemId, onSelectItem, sectionId }) {
         <FeatureCard
           key={item.id}
           variants={cardVariants}
+          icon={item.icon}
           headline={item.headline}
           description={item.description}
           active={activeItemId === item.id}

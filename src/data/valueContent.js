@@ -21,6 +21,7 @@ export const valueSections = [
     items: [
       {
         id: 1,
+        icon: 'layers',
         headline: 'AI contract analysis',
         description:
           'Quickly scan agreements, surface key terms, and identify issues that need closer legal review.',
@@ -29,6 +30,7 @@ export const valueSections = [
       },
       {
         id: 2,
+        icon: 'alert-triangle',
         headline: 'Risk flag detection',
         description:
           'Spot unclear clauses, missing protections, and contract language that may introduce unnecessary risk.',
@@ -43,6 +45,7 @@ export const valueSections = [
     items: [
       {
         id: 3,
+        icon: 'file-text',
         headline: 'Smarter legal summaries',
         description:
           'Turn dense legal documents into clear, structured insights your team can review and act on faster.',
@@ -51,6 +54,7 @@ export const valueSections = [
       },
       {
         id: 4,
+        icon: 'columns',
         headline: 'Clause comparison tools',
         description:
           'Compare language across contracts to maintain consistency and improve decision-making across reviews.',
@@ -65,6 +69,7 @@ export const valueSections = [
     items: [
       {
         id: 5,
+        icon: 'shield',
         headline: 'Secure team workflows',
         description:
           'Keep contract reviews organized with secure collaboration built for legal and business stakeholders.',
@@ -73,6 +78,7 @@ export const valueSections = [
       },
       {
         id: 6,
+        icon: 'life-buoy',
         headline: 'Reliable review support',
         description:
           'Support every stage of the review process with AI assistance designed for speed, control, and trust.',

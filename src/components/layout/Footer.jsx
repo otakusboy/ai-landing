@@ -36,7 +36,7 @@ function FooterImage() {
       <AppImage
         src={footerImage.src}
         alt={footerImage.alt}
-        className="h-[250px] w-full rounded-md object-cover lg:h-[300px]"
+        className="h-[250px] w-full rounded-md object-cover object-center lg:h-[300px]"
       />
     </div>
   )

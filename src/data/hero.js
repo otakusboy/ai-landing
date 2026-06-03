@@ -7,5 +7,4 @@ export const heroContent = {
     { label: 'Pricing', href: '#pricing' },
   ],
   imageLabel: 'Corporate team reviewing strategic initiatives together',
-  backgroundImage: new URL('../assets/hero.png', import.meta.url).href,
 }
