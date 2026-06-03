@@ -16,18 +16,19 @@ export const footerImage = {
   alt: 'Footer feature image',
 }
 
+/** Footer social icons — set `href` for each profile URL. */
 export const footerSocialLinks = [
   {
     id: 'social-x',
     label: 'X',
-    href: 'https://x.com',
+    href: 'https://x.com/balaqaba',
     external: true,
     icon: new URL('../assets/socials/twitter-alt-square.svg', import.meta.url).href,
   },
   {
     id: 'social-linkedin',
     label: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/iqbalaqaba/',
     external: true,
     icon: new URL('../assets/socials/linkedin.svg', import.meta.url).href,
   },
@@ -37,5 +38,12 @@ export const footerSocialLinks = [
     href: 'https://github.com',
     external: true,
     icon: new URL('../assets/socials/github.svg', import.meta.url).href,
+  },
+  {
+    id: 'social-upwork',
+    label: 'Upwork',
+    href: 'https://www.upwork.com/freelancers/iqbalaqaba',
+    external: true,
+    icon: new URL('../assets/socials/upwork.png', import.meta.url).href,
   },
 ]

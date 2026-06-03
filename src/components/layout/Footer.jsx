@@ -69,6 +69,16 @@ const socialIconMaskStyle = (icon) => ({
   maskSize: 'contain',
 })
 
+function SocialIcon({ icon }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="block h-5 w-5 bg-current"
+      style={socialIconMaskStyle(icon)}
+    />
+  )
+}
+
 function FooterSocials() {
   return (
     <ul className="flex items-center gap-3">
@@ -83,11 +93,7 @@ function FooterSocials() {
             )}
             {...(social.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            <span
-              aria-hidden="true"
-              className="block h-5 w-5 bg-current"
-              style={socialIconMaskStyle(social.icon)}
-            />
+            <SocialIcon icon={social.icon} />
           </a>
         </li>
       ))}
